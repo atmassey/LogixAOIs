@@ -1,0 +1,1485 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="16.03" TargetType="AddOnInstructionDefinition" ContainsContext="true" Owner="Dale Reed, Rockwell Automation" ExportDate="Fri Sep 04 16:17:22 2009" ExportOptions="References Context">
+<Controller Use="Context" Name="Sunrise">
+<DataTypes Use="Context">
+<DataType Name="DateTime" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[Date and TimeOfDay (absolute) or Time (duration/interval)]]>
+</Description>
+<Members>
+<Member Name="Yr" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false">
+<Description>
+<![CDATA[Year(s)]]>
+</Description>
+</Member>
+<Member Name="Mo" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false">
+<Description>
+<![CDATA[Month(s)]]>
+</Description>
+</Member>
+<Member Name="Da" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false">
+<Description>
+<![CDATA[Day(s)]]>
+</Description>
+</Member>
+<Member Name="Hr" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false">
+<Description>
+<![CDATA[Hour(s)]]>
+</Description>
+</Member>
+<Member Name="Min" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false">
+<Description>
+<![CDATA[Minute(s)]]>
+</Description>
+</Member>
+<Member Name="Sec" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false">
+<Description>
+<![CDATA[Second(s)]]>
+</Description>
+</Member>
+<Member Name="uSec" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false">
+<Description>
+<![CDATA[Microsecond(s)]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Name="T_ADD" Revision="1.0" RevisionExtension="00 Release" Vendor="Rockwell Automation" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2008-04-08T21:16:05.802Z" CreatedBy="Not Available" EditedDate="2009-04-23T20:13:43.291Z" EditedBy="Not Available"
+ SoftwareRevision="v16.03">
+<Description>
+<![CDATA[DateTime := DateTime + Time]]>
+</Description>
+<RevisionNote>
+<![CDATA[Initial formal release]]>
+</RevisionNote>
+<AdditionalHelpText>
+<![CDATA[T_Add : Add Date/Time plus Time to get new Date/Time
+
+This instruction adds a given amount of Time to a Date/Time to arrive at a new Date/Time.  The new Date/Time is "normalized", that is, given as a valid (if possible) Gregorian Date and Time:
+
+*  0 <= Microseconds < 1,000,000
+*  0 <= Seconds < 60    (NOTE: this instruction cannot add leap seconds;  sorry!)
+*  0 <= Minutes < 60
+*  0 <= Hours < 24
+*  1 <= Day <= 31 AND Date is a Valid Gregorian Date (see below)
+*  1 <= Month <= 12
+
+NOTE:  This instruction does NOT switch to Julian dates for dates before 1582 (or 1753 or whenever your place of interest switched to the Gregorian Calendar -- see Wikipedia on "Gregorian Calendar" for details)!  This instruction assumes the Gregorian Calendar extends "indefinitely" (about 5.8 million years) either side of "zero" CE!  It DOES handle the Gregorian 4 / 100 / 400 year rules, so Feb. 29, 2000 is a valid date, but Feb. 29, 2100 is not.  It DOES NOT handle Daylight Savings Time hour offsets when the amount of Time added carries the Date/Time across summer/winter time boundaries.
+]]>
+</AdditionalHelpText>
+<Parameters>
+<Parameter Name="Ref_DT" DataType="DateTime" Usage="InOut" Required="true" Visible="true">
+<Description>
+<![CDATA[DT (Date/Time) to which to add Time]]>
+</Description>
+</Parameter>
+<Parameter Name="Ref_Time" DataType="DateTime" Usage="InOut" Required="true" Visible="true">
+<Description>
+<![CDATA[Time to be added to DT (Date/Time)]]>
+</Description>
+</Parameter>
+<Parameter Name="Ref_Out" DataType="DateTime" Usage="InOut" Required="true" Visible="true">
+<Description>
+<![CDATA[Date/Time = DT+Time]]>
+</Description>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Wrk_YrFromMo" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Number of Years to add from Months]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_DaFromHr" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Number of Days to add from Hours]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_HrFromMin" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Number of Hours to add from Minutes]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_MinFromSec" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Number of Minutes to add from Seconds]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_SecFrom_uSec" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Number of Seconds to add from Microseconds]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_yyy" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Intermediate for year calculation]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_y" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Calculated YEAR from Gregorian Day Number]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_mmm" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Intermediate for month calculation]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_m" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Calculated MONTH from Gregorian Day Number]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_GD" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Gregorian Day Number (calculated for given Y/M/D)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_G" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Used in calculating Gregorian Day Number (function of Year and F)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_F" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Used in calculating Gregorian Day Number (function of month)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_ddd" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Intermediate for day calculation]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="ST">
+<Description>
+<![CDATA[Add Date/Time plus Time to give new Date/Time]]>
+</Description>
+<STContent>
+<Line Number="0">
+<![CDATA[// T_ADD : TIME -- ADD DATE/TIME PLUS TIME -> DATE/TIME]]>
+</Line>
+<Line Number="1">
+<![CDATA[// ]]>
+</Line>
+<Line Number="2">
+<![CDATA[// This instruction adds a given amount of Time to a Date/Time to arrive at a new Date/Time]]>
+</Line>
+<Line Number="3">
+<![CDATA[// The new Date/Time is "normalized", that is, given as a valid (if possible) Gregorian Date and Time:]]>
+</Line>
+<Line Number="4">
+<![CDATA[//]]>
+</Line>
+<Line Number="5">
+<![CDATA[//   *  0 <= Microseconds < 1,000,000]]>
+</Line>
+<Line Number="6">
+<![CDATA[//   *  0 <= Seconds < 60    (NOTE: this instruction cannot add leap seconds;  sorry!]]>
+</Line>
+<Line Number="7">
+<![CDATA[//   *  0 <= Minutes < 60]]>
+</Line>
+<Line Number="8">
+<![CDATA[//   *  0 <= Hours < 24]]>
+</Line>
+<Line Number="9">
+<![CDATA[//   *  1 <= Day <= 31 AND Date is a Valid Gregorian Date (see below)]]>
+</Line>
+<Line Number="10">
+<![CDATA[//   *  1 <= Month <= 12]]>
+</Line>
+<Line Number="11">
+<![CDATA[//]]>
+</Line>
+<Line Number="12">
+<![CDATA[//  NOTE:  This instruction does NOT switch to Julian dates for dates before 1582 (or 1753 or whenever your place of interest]]>
+</Line>
+<Line Number="13">
+<![CDATA[//    switched to the Gregorian Calendar -- see Wikipedia on "Gregorian Calendar" for details)!  This instruction assumes the ]]>
+</Line>
+<Line Number="14">
+<![CDATA[//    Gregorian Calendar extends "indefinitely" (about 5.8 million years) either side of "zero" CE!  It DOES handle the]]>
+</Line>
+<Line Number="15">
+<![CDATA[//    Gregorian 4 / 100 / 400 year rules, so Feb. 29, 2000 is a valid date, but Feb. 29, 2100 is not.  It DOES NOT handle]]>
+</Line>
+<Line Number="16">
+<![CDATA[//    Daylight Savings Time hour offsets when the amount of Time added carries the Date/Time across summer/winter time boundaries.]]>
+</Line>
+<Line Number="17">
+<![CDATA[//]]>
+</Line>
+<Line Number="18">
+<![CDATA[//  NOTE:  For algorithms used for Gregorian Date and Days Between Dates, see http://alcor.concordia.ca/~gpkatch/gdate-algorithm.html]]>
+</Line>
+<Line Number="19">
+<![CDATA[//]]>
+</Line>
+<Line Number="20">
+<![CDATA[//  Version 1.0-00 Release]]>
+</Line>
+<Line Number="21">
+<![CDATA[//	Initial Formal Release]]>
+</Line>
+<Line Number="22">
+<![CDATA[//]]>
+</Line>
+<Line Number="23">
+<![CDATA[]]>
+</Line>
+<Line Number="24">
+<![CDATA[// Add Microseconds (accounting for adding a negative number of Microseconds!)]]>
+</Line>
+<Line Number="25">
+<![CDATA[Ref_Out.uSec := (Ref_DT.uSec+Ref_Time.uSec) MOD 1000000;]]>
+</Line>
+<Line Number="26">
+<![CDATA[// Carry excess Seconds]]>
+</Line>
+<Line Number="27">
+<![CDATA[Wrk_SecFrom_uSec := (Ref_DT.uSec+Ref_Time.uSec) / 1000000;]]>
+</Line>
+<Line Number="28">
+<![CDATA[IF (Ref_Out.uSec < 0) THEN]]>
+</Line>
+<Line Number="29">
+<![CDATA[  Ref_Out.uSec := Ref_Out.uSec + 1000000;]]>
+</Line>
+<Line Number="30">
+<![CDATA[  Wrk_SecFrom_uSec := Wrk_SecFrom_uSec - 1;]]>
+</Line>
+<Line Number="31">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="32">
+<![CDATA[]]>
+</Line>
+<Line Number="33">
+<![CDATA[// Add Seconds]]>
+</Line>
+<Line Number="34">
+<![CDATA[Ref_Out.Sec := (Ref_DT.Sec+Ref_Time.Sec+Wrk_SecFrom_uSec) MOD 60;]]>
+</Line>
+<Line Number="35">
+<![CDATA[// Carry excess Minutes]]>
+</Line>
+<Line Number="36">
+<![CDATA[Wrk_MinFromSec := (Ref_DT.Sec+Ref_Time.Sec+Wrk_SecFrom_uSec) / 60;]]>
+</Line>
+<Line Number="37">
+<![CDATA[// Handle negative sum]]>
+</Line>
+<Line Number="38">
+<![CDATA[IF (Ref_Out.Sec < 0) THEN]]>
+</Line>
+<Line Number="39">
+<![CDATA[  Ref_Out.Sec := Ref_Out.Sec + 60;]]>
+</Line>
+<Line Number="40">
+<![CDATA[  Wrk_MinFromSec := Wrk_MinFromSec - 1;]]>
+</Line>
+<Line Number="41">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="42">
+<![CDATA[]]>
+</Line>
+<Line Number="43">
+<![CDATA[// Add Minutes]]>
+</Line>
+<Line Number="44">
+<![CDATA[Ref_Out.Min := (Ref_DT.Min+Ref_Time.Min+Wrk_MinFromSec) MOD 60;]]>
+</Line>
+<Line Number="45">
+<![CDATA[// Carry excess Hours]]>
+</Line>
+<Line Number="46">
+<![CDATA[Wrk_HrFromMin := (Ref_DT.Min+Ref_Time.Min+Wrk_MinFromSec) / 60;]]>
+</Line>
+<Line Number="47">
+<![CDATA[// Handle negative sum]]>
+</Line>
+<Line Number="48">
+<![CDATA[IF (Ref_Out.Min < 0) THEN]]>
+</Line>
+<Line Number="49">
+<![CDATA[  Ref_Out.Min := Ref_Out.Min + 60;]]>
+</Line>
+<Line Number="50">
+<![CDATA[  Wrk_HrFromMin := Wrk_HrFromMin - 1;]]>
+</Line>
+<Line Number="51">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="52">
+<![CDATA[]]>
+</Line>
+<Line Number="53">
+<![CDATA[// Add Hours]]>
+</Line>
+<Line Number="54">
+<![CDATA[Ref_Out.Hr := (Ref_DT.Hr+Ref_Time.Hr+Wrk_HrFromMin) MOD 24;]]>
+</Line>
+<Line Number="55">
+<![CDATA[// Carry excess Days]]>
+</Line>
+<Line Number="56">
+<![CDATA[Wrk_DaFromHr := (Ref_DT.Hr+Ref_Time.Hr+Wrk_HrFromMin) / 24;]]>
+</Line>
+<Line Number="57">
+<![CDATA[// Handle negative sum]]>
+</Line>
+<Line Number="58">
+<![CDATA[IF (Ref_Out.Hr < 0) THEN]]>
+</Line>
+<Line Number="59">
+<![CDATA[  Ref_Out.Hr := Ref_Out.Hr + 24;]]>
+</Line>
+<Line Number="60">
+<![CDATA[  Wrk_DaFromHr := Wrk_DaFromHr - 1;]]>
+</Line>
+<Line Number="61">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="62">
+<![CDATA[]]>
+</Line>
+<Line Number="63">
+<![CDATA[// That takes care of the time.  To add the days, we need to compute a Gregorian Day Number from the input Date,]]>
+</Line>
+<Line Number="64">
+<![CDATA[// then add the days and compute a Date from the new total Gregorian Day Number.  This takes care of the days in the months.]]>
+</Line>
+<Line Number="65">
+<![CDATA[// (After thet, we'll add the Months and Years like we did with the time.)]]>
+</Line>
+<Line Number="66">
+<![CDATA[]]>
+</Line>
+<Line Number="67">
+<![CDATA[// Compute the Gregorian Day Number for the input Date]]>
+</Line>
+<Line Number="68">
+<![CDATA[Wrk_F := (Ref_DT.Mo+9) MOD 12;]]>
+</Line>
+<Line Number="69">
+<![CDATA[Wrk_G := Ref_DT.Yr - Wrk_F/10;]]>
+</Line>
+<Line Number="70">
+<![CDATA[Wrk_GD := 365*Wrk_G+Wrk_G/4-Wrk_G/100+Wrk_G/400+(Wrk_F*306+5)/10+Ref_DT.Da-1;]]>
+</Line>
+<Line Number="71">
+<![CDATA[]]>
+</Line>
+<Line Number="72">
+<![CDATA[// Add the days]]>
+</Line>
+<Line Number="73">
+<![CDATA[Wrk_GD := Wrk_GD+Ref_Time.Da+Wrk_DaFromHr;]]>
+</Line>
+<Line Number="74">
+<![CDATA[]]>
+</Line>
+<Line Number="75">
+<![CDATA[// And back out from this Gregorian Day Number to a date]]>
+</Line>
+<Line Number="76">
+<![CDATA[Wrk_yyy := TRUNC (Wrk_GD +1.5)/365.2425;]]>
+</Line>
+<Line Number="77">
+<![CDATA[Wrk_ddd := Wrk_GD - (365*Wrk_yyy+Wrk_yyy/4-Wrk_yyy/100+Wrk_yyy/400);]]>
+</Line>
+<Line Number="78">
+<![CDATA[IF (Wrk_ddd < 0) THEN]]>
+</Line>
+<Line Number="79">
+<![CDATA[	Wrk_yyy := Wrk_yyy - 1;]]>
+</Line>
+<Line Number="80">
+<![CDATA[	Wrk_ddd := Wrk_GD - (365*Wrk_yyy+Wrk_yyy/4-Wrk_yyy/100+Wrk_yyy/400);]]>
+</Line>
+<Line Number="81">
+<![CDATA[	IF (Wrk_ddd < 0) THEN]]>
+</Line>
+<Line Number="82">
+<![CDATA[		Wrk_yyy := Wrk_yyy - 1;]]>
+</Line>
+<Line Number="83">
+<![CDATA[		Wrk_ddd := Wrk_GD - (365*Wrk_yyy+Wrk_yyy/4-Wrk_yyy/100+Wrk_yyy/400);]]>
+</Line>
+<Line Number="84">
+<![CDATA[	END_IF;]]>
+</Line>
+<Line Number="85">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="86">
+<![CDATA[Wrk_mmm := (100*Wrk_ddd + 52)/3060;]]>
+</Line>
+<Line Number="87">
+<![CDATA[Wrk_y := Wrk_yyy + (Wrk_mmm + 2)/12;]]>
+</Line>
+<Line Number="88">
+<![CDATA[Wrk_m := ((Wrk_mmm + 2) MOD 12) + 1; ]]>
+</Line>
+<Line Number="89">
+<![CDATA[Ref_Out.Da := Wrk_ddd - ((Wrk_mmm * 306) + 5)/10 + 1;]]>
+</Line>
+<Line Number="90">
+<![CDATA[]]>
+</Line>
+<Line Number="91">
+<![CDATA[// Add Months]]>
+</Line>
+<Line Number="92">
+<![CDATA[Ref_Out.Mo := ((Wrk_m+Ref_Time.Mo-1) MOD 12)+1;]]>
+</Line>
+<Line Number="93">
+<![CDATA[// Carry excess Years]]>
+</Line>
+<Line Number="94">
+<![CDATA[Wrk_YrFromMo := (Wrk_m+Ref_Time.Mo-1) / 12;]]>
+</Line>
+<Line Number="95">
+<![CDATA[// Handle negative sum]]>
+</Line>
+<Line Number="96">
+<![CDATA[IF (Ref_Out.Mo < 1) THEN]]>
+</Line>
+<Line Number="97">
+<![CDATA[  Ref_Out.Mo := Ref_Out.Mo + 12;]]>
+</Line>
+<Line Number="98">
+<![CDATA[  Wrk_YrFromMo := Wrk_YrFromMo - 1;]]>
+</Line>
+<Line Number="99">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="100">
+<![CDATA[]]>
+</Line>
+<Line Number="101">
+<![CDATA[// Add Years]]>
+</Line>
+<Line Number="102">
+<![CDATA[Ref_Out.yr := Wrk_y+Ref_Time.Yr+Wrk_YrFromMo;]]>
+</Line>
+<Line Number="103">
+<![CDATA[]]>
+</Line>
+</STContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="DateTime"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+<AddOnInstructionDefinition Use="Target" Name="T_DST" Revision="1.0" RevisionExtension="00 Release" Vendor="Rockwell Automation" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2009-08-10T17:23:02.632Z" CreatedBy="Not Available" EditedDate="2009-09-04T20:17:09.044Z"
+ EditedBy="Not Available" SoftwareRevision="v16.03">
+<Description>
+<![CDATA[Daylight Savings Time]]>
+</Description>
+<RevisionNote>
+<![CDATA[Initial Release]]>
+</RevisionNote>
+<AdditionalHelpText>
+<![CDATA[This instruction manages Daylight Saving Time.  It uses a number of configuration
+values to allow handling a wide variety of national and regional rules for
+when to start and end Daylight Saving Time (or "Summer Time").
+
+For use with HMI, it also provides Values for display of the Month/Day
+and Hour:Minute of the points in time when DST starts and ends.
+
+Plus, for logging logic, it provides bits to indicate when timestamps might
+have an Overlap (1:30 a.m. happens twice) or there is a Gap (one-shot).
+
+For best results:
+
+1.  Clear  Cfg_EnableDST  to 0.
+2.  Open the Controller Properties, clear the DST checkbox
+       and set the clock to local STANDARD time
+3.  Configure the T_DST instruction per the instructions below.
+4.  Set the  Cfg_EnableDST  bit to 1.
+
+The clock will be switched to DST based on the rules entered
+if DST is currently in effect for your location.
+
+Configuration:
+------------------------------
+Cfg_FwdMo: Month specified in rule for Date at which to spring forward (1..12)	
+Cfg_FwdOccur: Occurence of Day of Week to spring forward 1=1st, 2=2nd, .. 5=last	
+Cfg_FwdDoW: Day of the week on which to spring forward (0=Sun..6=Sat)	
+Cfg_FwdDoM: Day of month for spring forward if on a fixed date (1..31)	
+Cfg_FwdDoWBefore: Day of the week BEFORE the 1st..last Day of Week or Date (0=Sun..6=Sat)	
+Cfg_FwdHr: Hour (LOCAL) at which to spring forward (0..23)	
+Cfg_FwdMin: Minute (LOCAL) at which to spring forward (0..59)	
+Cfg_FwdFixedDate: 1=Spring forward on fixed date, 0=on occurrence of Day of Week
+Cfg_FwdUseBefore: 1=Spring forward on Day of Week BEFORE date or day of week	
+
+Cfg_BackMo: Month specified in rule for Date at which to fall back (1..12)	
+Cfg_BackOccur: Occurence of Day of Week to fall back 1=1st, 2=2nd, .. 5=last	
+Cfg_BackDoW: Day of the week on which to fall bacj (0=Sun..6=Sat)	
+Cfg_BackDoM: Day of month for fall back if on a fixed date (1..31)	
+Cfg_BackDoWBefore: Day of the week BEFORE the 1st..last Day of Week or Date (0=Sun..6=Sat)	
+Cfg_BackHr: Hour (LOCAL) at which to fall back (0..23)	
+Cfg_BackMin: Minute (LOCAL) at which to fall back (0..59)	
+Cfg_BackFixedDate: 1=Fall back on fixed date, 0=on occurrence of Day of Week
+Cfg_BackUseBefore: 1=Fall back on Day of Week BEFORE date or day of week	
+
+Cfg_Offset: Number of minutes to spring forward or fall back (0..1439, def=60)	
+Cfg_EnableDST:  1=Automatically adjust clock for DST, 0=Always Standard Time, no DST]]>
+</AdditionalHelpText>
+<Parameters>
+<Parameter Name="Cfg_FwdMo" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Month of spec for Date at which to spring forward (1..12)]]>
+</Description>
+<DefaultData>03 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_FwdOccur" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Occurence of Day of Week to spring forward 1=1st, 2=2nd, .. 5=last]]>
+</Description>
+<DefaultData>02 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_FwdDoW" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Day of the week on which to spring forward (0=Sun..6=Sat)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_FwdDoM" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Day of month for spring forward on fixed date (1..31)]]>
+</Description>
+<DefaultData>01 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_FwdDoWBefore" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Day of the week before (1st..last) Day of Week or Date (0=Sun..6=Sat)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_FwdHr" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Hour (LOCAL) at which to spring forward (0..23)]]>
+</Description>
+<DefaultData>02 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_FwdMin" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Minute (LOCAL) at which to spring forward (0..59)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_FwdFixedDate" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[1=Spring forward on fixed date, 0=on occurrence of DoW]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_FwdUseBefore" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[1=Spring forward on Day of Week BEFORE date or day of week]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_BackMo" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Month of spec for Date at which to fall back (1..12)]]>
+</Description>
+<DefaultData>0B 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_BackOccur" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Occurence of Day of Week to fall back 1=1st, 2=2nd, ... 5=last]]>
+</Description>
+<DefaultData>01 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_BackDoW" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Day of the week on which to fall back (0=Sun..6=Sat)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_BackDoM" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Day of month for fall back on fixed date (1..31)]]>
+</Description>
+<DefaultData>01 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_BackDoWBefore" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Day of the week before (1st..last) Day of Week or Date (0=Sun..6=Sat)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_BackHr" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Hour (LOCAL) at which to fall back (0..23)]]>
+</Description>
+<DefaultData>02 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_BackMin" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Minute (LOCAL) at which to fall back (0..59)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_BackFixedDate" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[1=Fall back on fixed date, 0=on occurrence of DoW]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_BackUseBefore" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[1=Fall back on Day of Week BEFORE date or day of week]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_Offset" DataType="INT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Minutes to spring forward or fall back (0..1439, def=60)]]>
+</Description>
+<DefaultData>3C 00</DefaultData>
+</Parameter>
+<Parameter Name="Cfg_EnableDST" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[1=Automatically adjust clock for DST, 0=no DST, clear "ApplyDST" always]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Sts_DST" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[Currently in Daylight Savings Time]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Sts_Gap" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[One-Shot: 1=Spring ahead, there is a gap in times]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Sts_Overlap" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[1=Fall back overlap, there are duplicate times]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Sts_CfgErr" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[1=Error in Configuration (see Err_Xxxx bits)]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Err_FwdCfg" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[1=Error in "Spring Forward" config values (month, date, DoW, hr, min)]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Err_BackCfg" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[1=Error in "Fall Back" config values (month, date, DoW, hr, min)]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Err_Offset" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[1=Error in Cfg_Offset value (must be 0..1439)]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Val_SoDST_Mo" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Month (1=Jan, 12=Dec) of point in time when DST starts]]>
+</Description>
+<DefaultData>01 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Val_SoDST_Da" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Day of the Month (1..31) of point in time when DST starts]]>
+</Description>
+<DefaultData>01 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Val_SoDST_Hr" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Hour of the day (0..23) of point in time when DST starts]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Val_SoDST_Min" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Minute of the hour (0..59) of point in time when DST starts]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Val_EoDST_Mo" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Month (1=Jan, 12=Dec) of point in time when DST ends]]>
+</Description>
+<DefaultData>01 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Val_EoDST_Da" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Day of the Month (1..31) of point in time when DST ends]]>
+</Description>
+<DefaultData>01 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Val_EoDST_Hr" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Hour of the day (0..23) of point in time when DST ends]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Val_EoDST_Min" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Minute of the hour (0..59) of point in time when DST ends]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Wrk_G" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Intermediate value for computing the day of the week]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_F" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Intermediate value for computing the day of the week]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Now" DataType="DateTime">
+<Description>
+<![CDATA[Current Date and Time from WALLCLOCKTIME object]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_NowDoW" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Calculated day of the week for current time (0=Sun, ..., 6=Sat)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_SoST" DataType="DateTime">
+<Description>
+<![CDATA[Date and Time of Start of Standard Time (EoDST - offset)]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_EoDST" DataType="DateTime">
+<Description>
+<![CDATA[Date and Time of End of Daylight Saving Time (Summer Time)]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_EoST" DataType="DateTime">
+<Description>
+<![CDATA[Date and Time of End of Standard Time]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_T_ADD2" DataType="T_ADD">
+<Description>
+<![CDATA[Add days to get to EoST date]]>
+</Description>
+<DefaultData>01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_T_ADD5" DataType="T_ADD">
+<Description>
+<![CDATA[Add (-offset) to (End of DST)]]>
+</Description>
+<DefaultData>01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_T_ADD1" DataType="T_ADD">
+<Description>
+<![CDATA[Add days to get to Fwd2 date]]>
+</Description>
+<DefaultData>01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Days" DataType="DateTime">
+<Description>
+<![CDATA[Days to add to get to EoST or EoDST date]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Fwd1" DataType="DateTime">
+<Description>
+<![CDATA[First DateTime toward building EoST]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Back1" DataType="DateTime">
+<Description>
+<![CDATA[First DateTime toward building EoDST]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Fwd1DoW" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Day of Week of frist date to spring forward]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Back1DoW" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Day of Week of first date to fall back]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Now_GEQ_EoST" DataType="BOOL" Radix="Decimal">
+<Description>
+<![CDATA[Current Time is GEQ End of Standard Time]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Now_GEQ_EoDST" DataType="BOOL" Radix="Decimal">
+<Description>
+<![CDATA[Current Time is GEQ End of Daylight Savings Time]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Now_GEQ_SoST" DataType="BOOL" Radix="Decimal">
+<Description>
+<![CDATA[Current Time is GEQ Start of Standard Time]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_EoST_LES_EoDST" DataType="BOOL" Radix="Decimal">
+<Description>
+<![CDATA[1=End of Std Time is before End of DST (N. hemisphere)]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_DST_ONS" DataType="BOOL" Radix="Decimal">
+<Description>
+<![CDATA[1=Just entered DST]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Offset" DataType="DateTime">
+<Description>
+<![CDATA[Offset as an amount of time to add (+/-)]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_ST_ONS" DataType="BOOL" Radix="Decimal">
+<Description>
+<![CDATA[1=Just entered ST]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_DST" DataType="SINT" Radix="Decimal">
+<Description>
+<![CDATA[DST flag from/to WALLCLOCKTIME (1=In DST, 0=not in DST)]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Fwd2DoW" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Day of the week for the second day calculated for spring forward]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_LeapYear" DataType="BOOL" Radix="Decimal">
+<Description>
+<![CDATA[This year is a Leap Year (29 days in Feb.)]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Back2DoW" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[Day of the week for the second day calculated for fall back]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Back2" DataType="DateTime">
+<Description>
+<![CDATA[Second DateTime toward building EoDST]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_Fwd2" DataType="DateTime">
+<Description>
+<![CDATA[Second DateTime toward building EoST]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_T_ADD4" DataType="T_ADD">
+<Description>
+<![CDATA[Add days to get to EoDST date]]>
+</Description>
+<DefaultData>01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_T_ADD3" DataType="T_ADD">
+<Description>
+<![CDATA[Add days to get to Back2 date]]>
+</Description>
+<DefaultData>01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<Description>
+<![CDATA[Manage Standard Time and Daylight Saving Time ("summer time") based on rules]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[============================================================
+T_DST:  TIME -- DAYLIGHT SAVING TIME
+============================================================
+Revision 1.0-00 - Release: 2009-09-04
+Initial Release
+============================================================
+This instruction manages Daylight Saving Time.  It uses a number of configuration
+values to allow handling a wide variety of national and regional rules for
+when to start and end Daylight Saving Time (or "Summer Time").
+For use with HMI, it also provides Values for display of the Month/Day
+and Hour:Minute of the points in time when DST starts and ends.
+Plus, for logging logic, it provides bits to indicate when timestamps might
+have an Overlap (1:30 a.m. happens twice) or there is a Gap (one-shot).
+
+For best results:
+1.  Clear  Cfg_Enable  to 0.
+2.  Open the Controller Properties, clear the DST checkbox
+and set the clock to local STANDARD time
+3.  Configure the T_DST instruction per the items below.
+4.  Set the  Cfg_Enable  bit to 1.
+The clock will be switched to DST based on the rules entered
+if DST is currently in effect for your location.
+
+Configuration:
+Cfg_FwdMo: Month specified in rule for Date at which to spring forward (1..12)	
+Cfg_FwdOccur: Occurence of Day of Week to spring forward 1=1st, 2=2nd, .. 5=last	
+Cfg_FwdDoW: Day of the week on which to spring forward (0=Sun..6=Sat)	
+Cfg_FwdDoM: Day of month for spring forward if on a fixed date (1..31)	
+Cfg_FwdDoWBefore: Day of the week BEFORE the 1st..last Day of Week or Date (0=Sun..6=Sat)	
+Cfg_FwdHr: Hour (LOCAL) at which to spring forward (0..23)	
+Cfg_FwdMin: Minute (LOCAL) at which to spring forward (0..59)	
+Cfg_FwdFixedDate: 1=Spring forward on fixed date, 0=on occurrence of Day of Week
+Cfg_FwdUseBefore: 1=Spring forward on Day of Week BEFORE date or day of week	
+
+Cfg_BackMo: Month specified in rule for Date at which to fall back (1..12)	
+Cfg_BackOccur: Occurence of Day of Week to fall back 1=1st, 2=2nd, .. 5=last	
+Cfg_BackDoW: Day of the week on which to fall bacj (0=Sun..6=Sat)	
+Cfg_BackDoM: Day of month for fall back if on a fixed date (1..31)	
+Cfg_BackDoWBefore: Day of the week BEFORE the 1st..last Day of Week or Date (0=Sun..6=Sat)	
+Cfg_BackHr: Hour (LOCAL) at which to fall back (0..23)	
+Cfg_BackMin: Minute (LOCAL) at which to fall back (0..59)	
+Cfg_BackFixedDate: 1=Fall back on fixed date, 0=on occurrence of Day of Week
+Cfg_BackUseBefore: 1=Fall back on Day of Week BEFORE date or day of week	
+
+Cfg_Offset: Number of minutes to spring forward or fall back (0..1439, def=60)	
+Cfg_EnableDSTL 1=Automatically adjust clock for DST, 0=Always Standard Time, no DST
+============================================================
+POWERUP / INVALID STATE HANDLING
+============================================================
+None required.  This instruction calculates whether we are in DST
+each scan based on current clock and ruleset.
+(The only time this doesn't work is during the overlap at the
+fall back to Standard Time.)
+
+============================================================
+CHECK CONFIGURATION DATA FOR ERRORS
+============================================================
+This rung checks the configuration data for validity based on the
+ranges shown in the summary above.
+
+If any configuration item is not valid, skip the rest of the logic and exit
+showing the bad config status.]]>
+</Comment>
+<Text>
+<![CDATA[[[LIM(13,Cfg_FwdMo,0) ,LIM(6,Cfg_FwdOccur,0) ,LIM(7,Cfg_FwdDoW,-1) ,LIM(32,Cfg_FwdDoM,0) ,LIM(7,Cfg_FwdDoWBefore,-1) ,LIM(24,Cfg_FwdHr,-1) ,LIM(60,Cfg_FwdMin,-1) ] OTE(Err_FwdCfg) ,[LIM(13,Cfg_BackMo,0) ,LIM(6,Cfg_BackOccur,0) ,LIM(7,Cfg_BackDoW,-1) ,LIM(32,Cfg_BackDoM,0) ,LIM(7,Cfg_BackDoWBefore,-1) ,LIM(24,Cfg_BackHr,-1) ,LIM(60,Cfg_BackMin,-1) ] OTE(Err_BackCfg) ,LIM(1440,Cfg_Offset,-1) OTE(Err_Offset) ]JMP(End);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[============================================================
+IS THE DST FUNCTION ENABLED?
+============================================================
+If the DST function is NOT enabled, don't do all the work below.
+Just clear the DST flag on the clock and exit!]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Cfg_EnableDST)CLR(Wrk_DST)SSV(WALLCLOCKTIME,,ApplyDST,Wrk_DST)JMP(End);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[============================================================
+CLEAR DateTime TAGS USED IN CALCULATIONS
+============================================================
+This rung clears out two tags used in DateTime calculations:
+
+Wrk_Days: number of days between First Forward or First Back
+date and the day to actually change the clock.
+
+Wrk_Offset: number of minutes (+ or -) to adjust the clock on change.]]>
+</Comment>
+<Text>
+<![CDATA[FLL(0,Wrk_Days,1)FLL(0,Wrk_Offset,1);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[============================================================
+GET CURRENT TIME FROM CLOCK
+============================================================]]>
+</Comment>
+<Text>
+<![CDATA[GSV(WALLCLOCKTIME,,LocalDateTime,Wrk_Now.Yr)GSV(WallClockTime,,ApplyDST,Wrk_DST);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[============================================================
+CALCULATE DAY OF WEEK FOR CURRENT DATE
+============================================================
+This version of the day of the week is based on:
+
+http://alcor.concordia.ca/~gpkatch/gdate-algorithm.html
+
+(NOTE:  ALL divisions are INTEGER -- truncated -- divisions!)
+F = ( month + 9 ) MOD 12
+G = year - ( F / 10 )
+Gregorian DayNumber [ D ] = ( 365 * G ) + ( G / 4 ) - ( G / 100 ) + ( G / 400 ) + ( ( ( F * 306 ) + 5 ) / 10 ) + day - 1
+DayOfWeek = ( DayNumber + 3 ) MOD 7
+
+(The final CPT adds the "-1" and "+3" from above to get the "+2" right before the MOD...)]]>
+</Comment>
+<Text>
+<![CDATA[[CPT(Wrk_F,(Wrk_Now.Mo+9)MOD 12) CPT(Wrk_G,Wrk_Now.Yr-(Wrk_F/10)) ,CPT(Wrk_NowDoW,(365*Wrk_G+(Wrk_G/4)-(Wrk_G/100)+(Wrk_G/400)+((Wrk_F*306+5)/10)+Wrk_Now.Da+2)MOD 7) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[============================================================
+IS THIS A LEAP YEAR?
+============================================================
+Check for a leap year.  We use this in a few places below.]]>
+</Comment>
+<Text>
+<![CDATA[[CMP((Wrk_Now.Yr MOD 400)=0) ,CMP((Wrk_Now.Yr MOD 4)=0) CMP((Wrk_Now.Yr MOD 100)<>0) ]OTE(Wrk_LeapYear);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[============================================================
+CALCULATE DATE OF END OF STANDARD TIME
+(Start of DST)
+============================================================
+1.  Clear structures, set up the first date's year and month.]]>
+</Comment>
+<Text>
+<![CDATA[FLL(0,Wrk_Fwd1,1)MOV(Wrk_Now.Yr,Wrk_Fwd1.Yr)MOV(Cfg_FwdMo,Wrk_Fwd1.Mo);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
+<![CDATA[2.  If the change is on a fixed date, copy date 1 to date 2.]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Cfg_FwdFixedDate)MOV(Cfg_FwdDoM,Wrk_Fwd1.Da);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Comment>
+<![CDATA[3.  If the change is not on a fixed date, figure out the first date of
+the right week:
+First week of the month:  range = 1st to 7th  (1)
+Second week = 8th to 14th  (8)
+Third week = 15th to 21st  (15)
+Fourth week = 22nd to 28th  (22)
+5 ==>  Last week, depends on the month,
+and for Februdary, depends on whether it's a leap year.]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Cfg_FwdFixedDate)[EQU(Cfg_FwdOccur,1) MOV(1,Wrk_Fwd1.Da) ,EQU(Cfg_FwdOccur,2) MOV(8,Wrk_Fwd1.Da) ,EQU(Cfg_FwdOccur,3) MOV(15,Wrk_Fwd1.Da) ,EQU(Cfg_FwdOccur,4) MOV(22,Wrk_Fwd1.Da) ,EQU(Cfg_FwdOccur,5) [MOV(25,Wrk_Fwd1.Da) ,[EQU(Cfg_FwdMo,4) ,EQU(Cfg_FwdMo,6) ,EQU(Cfg_FwdMo,9) ,EQU(Cfg_FwdMo,11) ] MOV(24,Wrk_Fwd1.Da) ,EQU(Cfg_FwdMo,2) [XIO(Wrk_LeapYear) MOV(22,Wrk_Fwd1.Da) ,XIC(Wrk_LeapYear) MOV(23,Wrk_Fwd1.Da) ] ] ];]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[4.  Whether we use a fixed date, or the first date of a week, calculate its day of the week.]]>
+</Comment>
+<Text>
+<![CDATA[[CPT(Wrk_F,(Wrk_Fwd1.Mo+9)MOD 12) CPT(Wrk_G,Wrk_Fwd1.Yr-(Wrk_F/10)) ,CPT(Wrk_Fwd1DoW,(365*Wrk_G+(Wrk_G/4)-(Wrk_G/100)+(Wrk_G/400)+((Wrk_F*306+5)/10)+Wrk_Fwd1.Da+2)MOD 7) ];]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[5.  For a fixed date, just copy the fixed date to the "second" date.
+And copy its day of the week as well.]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Cfg_FwdFixedDate)COP(Wrk_Fwd1,Wrk_Fwd2,1)MOV(Wrk_Fwd1DoW,Wrk_Fwd2DoW);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[6.  If it's not a fixed date, calculate the second date to be on the configured
+day of the week (like a Sunday) by adding the difference between
+the configured day of the week and the day of the week for
+the 1st, 8th, 15th, 22nd or the start of the last full week of the month.]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Cfg_FwdFixedDate)[CPT(Wrk_Days.Da,(Cfg_FwdDoW-Wrk_Fwd1DoW+7) MOD 7) ,T_ADD(Wrk_T_ADD1,Wrk_Fwd1,Wrk_Days,Wrk_Fwd2) ,MOV(Cfg_FwdDoW,Wrk_Fwd2DoW) ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[7.  If we're not using a "Xxxday before the Yth Zzzday of the month" rule,
+the "second" date calculated above is the End of Standard Time (EoST) date.]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Cfg_FwdUseBefore)COP(Wrk_Fwd2,Wrk_EoST,1);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[8.  If we ARE using a "Xxxday before the Yth Zzzday of the month" rule,
+calculate the EoST date by moving back to the right Day of the Week "before" (1 to 7 days).]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Cfg_FwdUseBefore)[CPT(Wrk_Days.Da,-((Wrk_Fwd2DoW-Cfg_FwdDoWBefore+6) MOD 7 +1)) ,T_ADD(Wrk_T_ADD2,Wrk_Fwd2,Wrk_Days,Wrk_EoST) ];]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Comment>
+<![CDATA[9.  Finally, apply the Hour and Minute of the time change to establish a single
+Point in Time (PiT) for the change from Standard Time to Daylight Saving Time.]]>
+</Comment>
+<Text>
+<![CDATA[[MOV(Cfg_FwdHr,Wrk_EoST.Hr) MOV(Cfg_FwdMin,Wrk_EoST.Min) ,MOV(Wrk_EoST.Mo,Val_SoDST_Mo) MOV(Wrk_EoST.Da,Val_SoDST_Da) ,MOV(Wrk_EoST.Hr,Val_SoDST_Hr) MOV(Wrk_EoST.Min,Val_SoDST_Min) ];]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Comment>
+<![CDATA[============================================================
+CALCULATE DATE OF END OF DAYLIGHT SAVING TIME
+(Start of ST)
+============================================================
+1.  Clear structures, set up the first date's year and month.]]>
+</Comment>
+<Text>
+<![CDATA[FLL(0,Wrk_Back1,1)MOV(Wrk_Now.Yr,Wrk_Back1.Yr)MOV(Cfg_BackMo,Wrk_Back1.Mo);]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Comment>
+<![CDATA[2.  If the change is on a fixed date, copy date 1 to date 2.]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Cfg_BackFixedDate)MOV(Cfg_BackDoM,Wrk_Back1.Da);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Comment>
+<![CDATA[3.  If the change is not on a fixed date, figure out the first date of
+the right week:
+First week of the month:  range = 1st to 7th  (1)
+Second week = 8th to 14th  (8)
+Third week = 15th to 21st  (15)
+Fourth week = 22nd to 28th  (22)
+5 ==>  Last week, depends on the month,
+and for Februdary, depends on whether it's a leap year.]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Cfg_BackFixedDate)[EQU(Cfg_BackOccur,1) MOV(1,Wrk_Back1.Da) ,EQU(Cfg_BackOccur,2) MOV(8,Wrk_Back1.Da) ,EQU(Cfg_BackOccur,3) MOV(15,Wrk_Back1.Da) ,EQU(Cfg_BackOccur,4) MOV(22,Wrk_Back1.Da) ,EQU(Cfg_BackOccur,5) [MOV(25,Wrk_Back1.Da) ,[EQU(Cfg_BackMo,4) ,EQU(Cfg_BackMo,6) ,EQU(Cfg_BackMo,9) ,EQU(Cfg_BackMo,11) ] MOV(24,Wrk_Back1.Da) ,EQU(Cfg_BackMo,2) [XIO(Wrk_LeapYear) MOV(22,Wrk_Back1.Da) ,XIC(Wrk_LeapYear) MOV(23,Wrk_Back1.Da) ] ] ];]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Comment>
+<![CDATA[4.  Whether we use a fixed date, or the first date of a week, calculate its day of the week.]]>
+</Comment>
+<Text>
+<![CDATA[[CPT(Wrk_F,(Wrk_Back1.Mo+9)MOD 12) CPT(Wrk_G,Wrk_Back1.Yr-(Wrk_F/10)) ,CPT(Wrk_Back1DoW,(365*Wrk_G+(Wrk_G/4)-(Wrk_G/100)+(Wrk_G/400)+((Wrk_F*306+5)/10)+Wrk_Back1.Da+2)MOD 7) ];]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Comment>
+<![CDATA[5.  For a fixed date, just copy the fixed date to the "second" date.
+And copy its day of the week as well.]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Cfg_BackFixedDate)COP(Wrk_Back1,Wrk_Back2,1)MOV(Wrk_Back1DoW,Wrk_Back2DoW);]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Comment>
+<![CDATA[6.  If it's not a fixed date, calculate the second date to be on the configured
+day of the week (like a Sunday) by adding the difference between
+the configured day of the week and the day of the week for
+the 1st, 8th, 15th, 22nd or the start of the last full week of the month.]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Cfg_BackFixedDate)[CPT(Wrk_Days.Da,(Cfg_BackDoW-Wrk_Back1DoW+7) MOD 7) ,T_ADD(Wrk_T_ADD3,Wrk_Back1,Wrk_Days,Wrk_Back2) ,MOV(Cfg_BackDoW,Wrk_Back2DoW) ];]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Comment>
+<![CDATA[7.  If we're not using a "Xxxday before the Yth Zzzday of the month" rule,
+the "second" date calculated above is the End of Daylight Saving Time (EoDST) date.]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Cfg_BackUseBefore)COP(Wrk_Back2,Wrk_EoDST,1);]]>
+</Text>
+</Rung>
+<Rung Number="22" Type="N">
+<Comment>
+<![CDATA[8.  If we ARE using a "Xxxday before the Yth Zzzday of the month" rule,
+calculate the EoDST date by moving back to the right Day of the Week "before" (1 to 7 days).]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Cfg_BackUseBefore)[CPT(Wrk_Days.Da,-((Wrk_Back2DoW-Cfg_BackDoWBefore+6) MOD 7 +1)) ,T_ADD(Wrk_T_ADD4,Wrk_Back2,Wrk_Days,Wrk_EoDST) ];]]>
+</Text>
+</Rung>
+<Rung Number="23" Type="N">
+<Comment>
+<![CDATA[9.  Finally, apply the Hour and Minute of the time change to establish a single
+Point in Time (PiT) for the change from Daylight Saving Time to Standard Time.]]>
+</Comment>
+<Text>
+<![CDATA[[MOV(Cfg_BackHr,Wrk_EoDST.Hr) MOV(Cfg_BackMin,Wrk_EoDST.Min) ,MOV(Wrk_EoDST.Mo,Val_EoDST_Mo) MOV(Wrk_EoDST.Da,Val_EoDST_Da) ,MOV(Wrk_EoDST.Hr,Val_EoDST_Hr) MOV(Wrk_EoDST.Min,Val_EoDST_Min) ];]]>
+</Text>
+</Rung>
+<Rung Number="24" Type="N">
+<Comment>
+<![CDATA[============================================================
+START OF STANDARD TIME
+============================================================
+Finally, calculate the "Start of Standard Time" (Wrk_SoST) Point in Time,
+which is the point in time IMMEDIATELY AFTER the fall back.
+This time is the START of the "OVERLAP" period, where
+time stamps based on local time show duplicates.
+
+This DateTime is equal to the EoDST DateTime minus the offset.]]>
+</Comment>
+<Text>
+<![CDATA[NEG(Cfg_Offset,Wrk_Offset.Min)T_ADD(Wrk_T_ADD5,Wrk_EoDST,Wrk_Offset,Wrk_SoST);]]>
+</Text>
+</Rung>
+<Rung Number="25" Type="N">
+<Comment>
+<![CDATA[============================================================
+COMPARE Wrk_Now AGAINST OUR THREE POINTS IN TIME
+============================================================
+We need to compare Wrk_Now against three points in time to determine
+where we are in the ST / DST cycle:
+Wrk_EoST: the End of Standard Time (start of DST)
+Wrk_EoDST: the End of Daylight Saving Time
+Wrk_SoST: the Start of Standard Time (overlap)(typically an hour "less than" the EoDST)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compare Wrk_Now >= Wrk_EoST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+IF the Wrk_Now YEAR is higher,
+or if the years are the same and the Wrk_Now MONTH is higher,
+or if the years and months are the same and the Wrk_Now DAY is higher,
+or if the years, months and days are the same and the Wrk_Now HOUR is higher,
+or if the years, months, days and hours are the same and the Wrk_Now MINUTE is higher,
+or if the years, months, days, hours and minutes are the same and the Wrk_Now SECOND is higher,
+or if the years, months, days, hours, minutes and seconds are the same and the Wrk_Now MICROSECOND is higher or the SAME,
+(whew!)  THEN Wrk_Now is AFTER OR THE SAME AS (greater than or equal to) Wrk_EoST.
+
+(NOTE: You can type <ALT>- 0 (zero) or click the "tree structure" icon on the toolbar
+to close the Controller Organizer tree if you would like a wider view of this rung.)]]>
+</Comment>
+<Text>
+<![CDATA[[GRT(Wrk_Now.Yr,Wrk_EoST.Yr) ,EQU(Wrk_Now.Yr,Wrk_EoST.Yr) [GRT(Wrk_Now.Mo,Wrk_EoST.Mo) ,EQU(Wrk_Now.Mo,Wrk_EoST.Mo) [GRT(Wrk_Now.Da,Wrk_EoST.Da) ,EQU(Wrk_Now.Da,Wrk_EoST.Da) [GRT(Wrk_Now.Hr,Wrk_EoST.Hr) ,EQU(Wrk_Now.Hr,Wrk_EoST.Hr) GEQ(Wrk_Now.Min,Wrk_EoST.Min) ] ] ] ]OTE(Wrk_Now_GEQ_EoST);]]>
+</Text>
+</Rung>
+<Rung Number="26" Type="N">
+<Comment>
+<![CDATA[~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+COMPARE Wrk_Now >= Wrk_EoDST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+IF the Wrk_Now YEAR is higher,
+or if the years are the same and the Wrk_Now MONTH is higher,
+or if the years and months are the same and the Wrk_Now DAY is higher,
+or if the years, months and days are the same and the Wrk_Now HOUR is higher,
+or if the years, months, days and hours are the same and the Wrk_Now MINUTE is higher,
+or if the years, months, days, hours and minutes are the same and the Wrk_Now SECOND is higher,
+or if the years, months, days, hours, minutes and seconds are the same and the Wrk_Now MICROSECOND is higher or the SAME,
+(whew!)  THEN Wrk_Now is AFTER OR THE SAME AS (greater than or equal to) Wrk_EoDST.
+
+(NOTE: You can type <ALT>- 0 (zero) or click the "tree structure" icon on the toolbar
+to close the Controller Organizer tree if you would like a wider view of this rung.)]]>
+</Comment>
+<Text>
+<![CDATA[[GRT(Wrk_Now.Yr,Wrk_EoDST.Yr) ,EQU(Wrk_Now.Yr,Wrk_EoDST.Yr) [GRT(Wrk_Now.Mo,Wrk_EoDST.Mo) ,EQU(Wrk_Now.Mo,Wrk_EoDST.Mo) [GRT(Wrk_Now.Da,Wrk_EoDST.Da) ,EQU(Wrk_Now.Da,Wrk_EoDST.Da) [GRT(Wrk_Now.Hr,Wrk_EoDST.Hr) ,EQU(Wrk_Now.Hr,Wrk_EoDST.Hr) GEQ(Wrk_Now.Min,Wrk_EoDST.Min) ] ] ] ]OTE(Wrk_Now_GEQ_EoDST);]]>
+</Text>
+</Rung>
+<Rung Number="27" Type="N">
+<Comment>
+<![CDATA[~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+COMPARE Wrk_Now >= Wrk_SoST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+IF the Wrk_Now YEAR is higher,
+or if the years are the same and the Wrk_Now MONTH is higher,
+or if the years and months are the same and the Wrk_Now DAY is higher,
+or if the years, months and days are the same and the Wrk_Now HOUR is higher,
+or if the years, months, days and hours are the same and the Wrk_Now MINUTE is higher,
+or if the years, months, days, hours and minutes are the same and the Wrk_Now SECOND is higher,
+or if the years, months, days, hours, minutes and seconds are the same and the Wrk_Now MICROSECOND is higher or the SAME,
+(whew!)  THEN Wrk_Now is AFTER OR THE SAME AS (greater than or equal to) Wrk_SoST.
+
+(NOTE: You can type <ALT>- 0 (zero) or click the "tree structure" icon on the toolbar
+to close the Controller Organizer tree if you would like a wider view of this rung.)]]>
+</Comment>
+<Text>
+<![CDATA[[GRT(Wrk_Now.Yr,Wrk_SoST.Yr) ,EQU(Wrk_Now.Yr,Wrk_SoST.Yr) [GRT(Wrk_Now.Mo,Wrk_SoST.Mo) ,EQU(Wrk_Now.Mo,Wrk_SoST.Mo) [GRT(Wrk_Now.Da,Wrk_SoST.Da) ,EQU(Wrk_Now.Da,Wrk_SoST.Da) [GRT(Wrk_Now.Hr,Wrk_SoST.Hr) ,EQU(Wrk_Now.Hr,Wrk_SoST.Hr) GEQ(Wrk_Now.Min,Wrk_SoST.Min) ] ] ] ]OTE(Wrk_Now_GEQ_SoST);]]>
+</Text>
+</Rung>
+<Rung Number="28" Type="N">
+<Comment>
+<![CDATA[============================================================
+DETERMINE HEMISPHERE
+============================================================
+This rung tells us if the End of Standard Time is BEFORE the End of
+Daylight Saving Time (typical for the Northern hemisphere)
+or AFTER (typical for the Southern hemisphere).]]>
+</Comment>
+<Text>
+<![CDATA[[GRT(Cfg_BackMo,Cfg_FwdMo) ,EQU(Cfg_BackMo,Cfg_FwdMo) GRT(Cfg_BackDoM,Cfg_FwdDoM) ]OTE(Wrk_EoST_LES_EoDST);]]>
+</Text>
+</Rung>
+<Rung Number="29" Type="N">
+<Comment>
+<![CDATA[============================================================
+DETERMINE IF WE ARE IN STANDARD TIME
+============================================================
+In the North:  If we are before the End of Standard Time (spring forward)
+OR after the End of Daylight Saving Time (fall back), we are in ST.
+In the South:  If we are before the End of Standard Time (spring forward)
+AND after the End of Daylight Saving Time (fall back), we are in ST.]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Wrk_EoST_LES_EoDST) [XIO(Wrk_Now_GEQ_EoST) ,XIC(Wrk_Now_GEQ_EoDST) ] ,XIO(Wrk_EoST_LES_EoDST) XIO(Wrk_Now_GEQ_EoST) XIC(Wrk_Now_GEQ_EoDST) ][GRT(Wrk_DST,0) OTE(Wrk_ST_ONS) ,CLR(Wrk_DST) ];]]>
+</Text>
+</Rung>
+<Rung Number="30" Type="N">
+<Comment>
+<![CDATA[============================================================
+DETERMINE IF WE ARE IN DAYLIGHT SAVING TIME (Summer Time)
+============================================================
+In the South:  If we are before the Start of Standard Time (fall back)
+OR after the End of Standard Time (spring forward), we are in DST.
+In the North:  If we are before the Start of Standard Time (fall back)
+AND after the End of Standard Time (spring forward), we are in DST.]]>
+</Comment>
+<Text>
+<![CDATA[[XIO(Wrk_EoST_LES_EoDST) [XIO(Wrk_Now_GEQ_SoST) ,XIC(Wrk_Now_GEQ_EoST) ] ,XIC(Wrk_EoST_LES_EoDST) XIO(Wrk_Now_GEQ_SoST) XIC(Wrk_Now_GEQ_EoST) ][EQU(Wrk_DST,0) OTE(Wrk_DST_ONS) ,MOV(1,Wrk_DST) ];]]>
+</Text>
+</Rung>
+<Rung Number="31" Type="N">
+<Comment>
+<![CDATA[============================================================
+ADJUST THE CLOCK
+============================================================
+On transition INTO or OUT OF Daylight Saving Time, adjust the clock
+forward or back by the offset time.]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Wrk_ST_ONS) ,XIC(Wrk_DST_ONS) ]SSV(WALLCLOCKTIME,,DSTAdjustment,Cfg_Offset)SSV(WALLCLOCKTIME,,ApplyDST,Wrk_DST);]]>
+</Text>
+</Rung>
+<Rung Number="32" Type="N">
+<Comment>
+<![CDATA[============================================================
+PUBLISH STATUS
+============================================================
+These rungs output the Status of this instruction
+
+If we are NOT in DST and we are between the calculated DateTime values for
+the Overlap, show the Overlap Status.]]>
+</Comment>
+<Text>
+<![CDATA[EQU(Wrk_DST,0)XIC(Wrk_Now_GEQ_SoST)XIO(Wrk_Now_GEQ_EoDST)OTE(Sts_Overlap);]]>
+</Text>
+</Rung>
+<Rung Number="33" Type="N">
+<Comment>
+<![CDATA[If we just transitioned into DST, show the Gap status (a one-shot).]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Wrk_DST_ONS)OTE(Sts_Gap);]]>
+</Text>
+</Rung>
+<Rung Number="34" Type="N">
+<Comment>
+<![CDATA[Finally, the primary status: Show whether or not we are in DST.]]>
+</Comment>
+<Text>
+<![CDATA[GEQ(Wrk_DST,1)OTE(Sts_DST);]]>
+</Text>
+</Rung>
+<Rung Number="35" Type="N">
+<Comment>
+<![CDATA[Report any configuration errors and we're done.
+(We come here and skip the rest of the DST code if there are any errors in config.)]]>
+</Comment>
+<Text>
+<![CDATA[LBL(End)[XIC(Err_FwdCfg) ,XIC(Err_BackCfg) ,XIC(Err_Offset) ]OTE(Sts_CfgErr);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="DateTime"/>
+<Dependency Type="AddOnInstructionDefinition" Name="T_ADD"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+<WallClockTime Use="Context">
+</WallClockTime>
+</Controller>
+</RSLogix5000Content>

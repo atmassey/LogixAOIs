@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="33.01" TargetName="Keyence_LR_TB2000" TargetType="AddOnInstructionDefinition" TargetRevision="1.0 " TargetLastEdited="2022-07-15T13:37:41.996Z" ContainsContext="true" Owner="Information Technology, Bowling Green Metalforming" ExportDate="Fri Jul 15 08:40:07 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="test123">
+<DataTypes Use="Context">
+<DataType Name="IO_Link_Port_Data" Family="NoFamily" Class="User">
+<Members>
+<Member Name="Inputs" DataType="SINT" Dimension="48" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Outputs" DataType="SINT" Dimension="48" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="LaserInput" Family="NoFamily" Class="User">
+<Members>
+<Member Name="PV_IND" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="PV_PB" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Visibility" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="HighLimit" DataType="DINT" Dimension="6" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowLimit" DataType="DINT" Dimension="6" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Tolerance" DataType="DINT" Dimension="6" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Value" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="Keyence_LR_TB2000" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2022-07-14T20:31:32.769Z" CreatedBy="MAGNA\Austin.Massey" EditedDate="2022-07-15T13:37:41.996Z" EditedBy="MAGNA\Austin.Massey" SoftwareRevision="v33.01"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="IO_Link_Port" TagType="Base" DataType="IO_Link_Port_Data" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="LaserDataMapped" TagType="Base" DataType="LaserInput" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="TeachEnable" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="In_Limits" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Tolerance" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="SetLimitsONS" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[BTD(IO_Link_Port.Inputs[1],0,LaserDataMapped.Value,0,8)BTD(IO_Link_Port.Inputs[0],0,LaserDataMapped.Value,8,8);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[MOV(Tolerance,LaserDataMapped.Tolerance[0]);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[XIC(TeachEnable)ONS(SetLimitsONS)ADD(LaserDataMapped.Value,LaserDataMapped.Tolerance[0],LaserDataMapped.HighLimit[0])SUB(LaserDataMapped.Value,LaserDataMapped.Tolerance[0],LaserDataMapped.LowLimit[0]);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[LIM(LaserDataMapped.LowLimit[0],LaserDataMapped.Value,LaserDataMapped.HighLimit[0])OTE(In_Limits);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="IO_Link_Port_Data"/>
+<Dependency Type="DataType" Name="LaserInput"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

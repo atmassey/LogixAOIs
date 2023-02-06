@@ -1,0 +1,2409 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="33.01" TargetName="AOI_Time_Stamp" TargetType="AddOnInstructionDefinition" TargetRevision="1.0 " TargetLastEdited="2022-08-24T20:09:44.826Z" ContainsContext="true" Owner="Information Technology, Bowling Green Metalforming" ExportDate="Wed Aug 24 15:09:56 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="offline_test">
+<DataTypes Use="Context">
+<DataType Name="DaysOfWeek" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZDaysOfWeek0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Sunday" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDaysOfWeek0" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Monday" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDaysOfWeek0" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Tuesday" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDaysOfWeek0" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Wednesday" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDaysOfWeek0" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Thursday" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDaysOfWeek0" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="Friday" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDaysOfWeek0" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="Saturday" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDaysOfWeek0" BitNumber="6" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="GeneralConstants_ASCIIStrings" Family="NoFamily" Class="User">
+<Members>
+<Member Name="NUL" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SOH" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="STX" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="ETX" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="EOT" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="ENQ" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="ACK" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="BEL" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="BS" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="HT" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LF" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="VT" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="FF" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="CR" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SO" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SI" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DLE" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DC1" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DC2" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DC3" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DC4" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="NAK" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SYN" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="ETB" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="CAN" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="EM" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SUB" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="ESC" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="FS" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="GS" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="RS" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="US" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Space" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Exclamation" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DoubleQuote" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="NumberSign" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DollarSgn" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="PercentSign" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Ampersand" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SingleQuote" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LeftParenthesis" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="RightParenthesis" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Asterisk" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="AdditionSign" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Comma" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SubtractionSign" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Period" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="ForwardSlash" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Zero" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="One" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Two" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Three" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Four" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Five" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Six" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Seven" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Eight" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Nine" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Colon" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SemiColon" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LessThanSign" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="EqualSign" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="GreaterThanSign" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="QuestionMark" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="AtSign" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseA" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseB" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseC" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseD" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseE" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseF" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseG" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseH" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseI" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseJ" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseK" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseL" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseM" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseN" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseO" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseP" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseQ" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseR" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseS" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseT" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseU" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseV" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseW" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseX" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseY" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UpperCaseZ" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LeftBracket" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="BackSlash" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="RightBracket" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Caret" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UnderScore" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="GraveAccent" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseA" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseB" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseC" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseD" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseE" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseF" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseG" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseH" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseI" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseJ" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseK" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseL" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseM" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseN" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseO" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseP" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseQ" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseR" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseS" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseT" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseU" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseV" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseW" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseX" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseY" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LowerCaseZ" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LeftBrace" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="VerticalPipe" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="RightBrace" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Tilde" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DEL" DataType="STRING_01" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="AM" DataType="STRING_02" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="PM" DataType="STRING_02" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_01"/>
+<Dependency Type="DataType" Name="STRING_02"/>
+<Dependency Type="DataType" Name="STRING_02"/>
+</Dependencies>
+</DataType>
+<DataType Name="STRING_01" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="1" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="STRING_02" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="2" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="STRING_03" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="3" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="STRING_04" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="4" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="STRING_21" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="21" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="TimeBOOLS" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZ_TimeBOOLS0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Year" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS0" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Month" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS0" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Day" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS0" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Hour" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS0" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Minute" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS0" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="Second" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS0" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="FlashHalfSec" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS0" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="Flash1Sec" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS0" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZ_TimeBOOLS9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Flash2Sec" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS9" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Year2Sec" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS9" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Month2Sec" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS9" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Day2Sec" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS9" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Hour2Sec" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS9" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="Minute2Sec" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZ_TimeBOOLS9" BitNumber="5" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="TimeDINTS" Family="NoFamily" Class="User">
+<Members>
+<Member Name="Year" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Month" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Day" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Hour" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Minute" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Second" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="mSec" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="TimeHourCorrection" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="TimeHourTemp" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="TimeStamp" Family="NoFamily" Class="User">
+<Members>
+<Member Name="EventID" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="State" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="ActiveStep" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Pulse" DataType="TimeBOOLS" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Last" DataType="TimeDINTS" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="TimeAsDintArray" DataType="TimeDINTS" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="TimeAsStringArray" DataType="TimeSTRINGS" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="TimeAsString" DataType="STRING_21" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DayOfWeek" DataType="DaysOfWeek" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="TimeBOOLS"/>
+<Dependency Type="DataType" Name="TimeDINTS"/>
+<Dependency Type="DataType" Name="TimeDINTS"/>
+<Dependency Type="DataType" Name="TimeSTRINGS"/>
+<Dependency Type="DataType" Name="STRING_21"/>
+<Dependency Type="DataType" Name="DaysOfWeek"/>
+</Dependencies>
+</DataType>
+<DataType Name="TimeSTRINGS" Family="NoFamily" Class="User">
+<Members>
+<Member Name="Year" DataType="STRING_04" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Month" DataType="STRING_02" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Date" DataType="STRING_02" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Hour" DataType="STRING_02" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Minute" DataType="STRING_02" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Second" DataType="STRING_02" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="mSec" DataType="STRING_03" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="STRING_04"/>
+<Dependency Type="DataType" Name="STRING_02"/>
+<Dependency Type="DataType" Name="STRING_02"/>
+<Dependency Type="DataType" Name="STRING_02"/>
+<Dependency Type="DataType" Name="STRING_02"/>
+<Dependency Type="DataType" Name="STRING_02"/>
+<Dependency Type="DataType" Name="STRING_03"/>
+</Dependencies>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Name="DayOfWeek" Revision="1.0" RevisionExtension="00 Release" Vendor="Rockwell Automation" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2010-12-23T03:12:07.685Z" CreatedBy="Not Available" EditedDate="2021-10-29T10:48:15.843Z" EditedBy="Not Available"
+ SoftwareRevision="v31.02">
+<Description>
+<![CDATA[Day of the Week]]>
+</Description>
+<RevisionNote>
+<![CDATA[Ladder Diagram (LD) implementation to determine Day of the Week given Date (year, month, day of the month)]]>
+</RevisionNote>
+<AdditionalHelpText>
+<![CDATA[Day of the Week
+
+This instruction takes a given Date and returns the Day of the Week
+  (0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat)
+
+The given date is assumed valid (exists on the common Gregorian
+calendar) -- it won't warn you if you input, say, February 30th!
+
+NOTE:  This instruction does NOT switch to Julian dates for dates
+before 1582 (or 1753 or whenever your place of interest switched
+to the Gregorian Calendar (see Wikipedia on Gregorian Calendar
+for details)!  This instruction assumes the Gregorian Calendar extends
+"indefinitely" (at least 5.8 million years) either side of "zero"!  It DOES
+handle the Gregorian 4 / 100 / 400 year rules, so Feb. 29, 2000 is a
+valid date, but Feb. 29, 2100 is not.
+
+TIP: if you leave off the "+2) MOD 7" on the last CPT, you can use
+the resulting value as a "sequential day number" for calculating the
+number of days between two dates.]]>
+</AdditionalHelpText>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Inp_Year" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Calendar Year]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[2010]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="2010"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Inp_Month" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Calendar Month]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[1]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Inp_Day" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Calendar Day of the Montrh]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[1]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="1"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Out_DayOfWeek" TagType="Base" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Calculated Day of the Week 0=Sun, 1=Mon, ..., 6=Sat]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Sunday" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Monday" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Tuesday" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Wednesday" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Thursday" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Friday" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Saturday" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Wrk_G" DataType="DINT" Radix="Decimal" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Intermediate value, function of Year and Wrk_F]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Wrk_F" DataType="DINT" Radix="Decimal" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Intermediate value, function of Month]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<Description>
+<![CDATA[Calculate the day of the week given the date]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[Day of the Week
+
+This instruction takes a given Date and returns the Day of the Week
+  (0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat)
+
+The given date is assumed valid (exists on the common Gregorian
+calendar) -- it won't warn you if you input, say, February 30th!
+
+NOTE:  This instruction does NOT switch to Julian dates for dates
+before 1582 (or 1753 or whenever your place of interest switched
+to the Gregorian Calendar (see Wikipedia on Gregorian Calendar
+for details)!  This instruction assumes the Gregorian Calendar extends
+"indefinitely" (at least 5.8 million years) either side of "zero"!  It DOES
+handle the Gregorian 4 / 100 / 400 year rules, so Feb. 29, 2000 is a
+valid date, but Feb. 29, 2100 is not.
+
+TIP: if you leave off the "+2) MOD 7" on the last CPT, you can use
+the resulting value as a "sequential day number" for calculating the
+number of days between two dates.
+
+============================================================
+CALCULATE THE DAY OF THE WEEK
+============================================================
+This version of the day of the week is based on:
+
+http://alcor.concordia.ca/~gpkatch/gdate-algorithm.html
+
+(NOTE:  ALL divisions are INTEGER -- truncated -- divisions!  So this method is FAST!)
+F = ( month + 9 ) MOD 12
+G = year - ( F / 10 )
+Gregorian DayNumber [ D ] = ( 365 * G ) + ( G / 4 ) - ( G / 100 ) + ( G / 400 ) + ( ( ( F * 306 ) + 5 ) / 10 ) + day - 1
+DayOfWeek = ( DayNumber + 3 ) MOD 7
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This rung calculates the "G" and "F" functions shown in the algorithm above.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~]]>
+</Comment>
+<Text>
+<![CDATA[CPT(Wrk_F,(Inp_Month+9)MOD 12)CPT(Wrk_G,Inp_Year-(Wrk_F/10));]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This rung calculates the remainder of the algorithm.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The "Day Number" is calculated, and the MOD 7
+(remainder after division by 7) is stored as the Day of the Week.
+
+NOTE:  The "+2" offset aligns Out_DayOfWeek as:
+0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat]]>
+</Comment>
+<Text>
+<![CDATA[CPT(Out_DayOfWeek,(365*Wrk_G+(Wrk_G/4)-(Wrk_G/100)+(Wrk_G/400)+((Wrk_F*306+5)/10)+Inp_Day+2)MOD 7);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[EQU(Out_DayOfWeek,0)OTE(Sunday);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[EQU(Out_DayOfWeek,1)OTE(Monday);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[EQU(Out_DayOfWeek,2)OTE(Tuesday);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[EQU(Out_DayOfWeek,3)OTE(Wednesday);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[EQU(Out_DayOfWeek,4)OTE(Thursday);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[EQU(Out_DayOfWeek,5)OTE(Friday);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[EQU(Out_DayOfWeek,6)OTE(Saturday);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+<AddOnInstructionDefinition Use="Target" Name="AOI_Time_Stamp" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2022-08-24T17:56:50.408Z" CreatedBy="MAGNA\Austin.Massey" EditedDate="2022-08-24T20:09:44.826Z" EditedBy="MAGNA\Austin.Massey" SoftwareRevision="v33.01"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Time_Mapped" TagType="Base" DataType="TimeStamp" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="TwelveHourFormat" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="ASCII" DataType="GeneralConstants_ASCIIStrings" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00$00'],[0,'$00$00']]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="GeneralConstants_ASCIIStrings">
+<StructureMember Name="NUL" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SOH" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="STX" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ETX" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="EOT" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ENQ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ACK" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="BEL" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="BS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="HT" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LF" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="VT" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="FF" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="CR" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SO" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SI" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DLE" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DC1" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DC2" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DC3" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DC4" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="NAK" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SYN" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ETB" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="CAN" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="EM" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SUB" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ESC" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="FS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="GS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="RS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="US" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Space" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Exclamation" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DoubleQuote" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="NumberSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DollarSgn" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="PercentSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Ampersand" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SingleQuote" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LeftParenthesis" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="RightParenthesis" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Asterisk" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="AdditionSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Comma" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SubtractionSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Period" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ForwardSlash" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Zero" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="One" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Two" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Three" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Four" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Five" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Six" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Seven" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Eight" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Nine" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Colon" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SemiColon" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LessThanSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="EqualSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="GreaterThanSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="QuestionMark" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="AtSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseA" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseB" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseC" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseD" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseE" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseF" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseG" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseH" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseI" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseJ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseK" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseL" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseM" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseN" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseO" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseP" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseQ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseR" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseT" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseU" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseV" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseW" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseX" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseY" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseZ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LeftBracket" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="BackSlash" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="RightBracket" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Caret" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UnderScore" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="GraveAccent" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseA" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseB" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseC" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseD" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseE" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseF" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseG" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseH" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseI" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseJ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseK" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseL" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseM" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseN" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseO" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseP" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseQ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseR" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseT" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseU" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseV" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseW" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseX" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseY" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseZ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LeftBrace" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="VerticalPipe" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="RightBrace" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Tilde" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DEL" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="AM" DataType="STRING_02">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_02" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="PM" DataType="STRING_02">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_02" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TimeAsDintArray_Time12HoursFormat" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="DayOfWeek" DataType="DayOfWeek" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[1,2010,1,1,0,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="DayOfWeek">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Inp_Year" DataType="DINT" Radix="Decimal" Value="2010"/>
+<DataValueMember Name="Inp_Month" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="Inp_Day" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="Out_DayOfWeek" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Sunday" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Monday" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Tuesday" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Wednesday" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Thursday" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Friday" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Saturday" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ASCII_Time" DataType="GeneralConstants_ASCIIStrings" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00'],[0,'$00$00'],[0,'$00$00']]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="GeneralConstants_ASCIIStrings">
+<StructureMember Name="NUL" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SOH" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="STX" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ETX" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="EOT" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ENQ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ACK" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="BEL" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="BS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="HT" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LF" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="VT" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="FF" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="CR" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SO" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SI" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DLE" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DC1" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DC2" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DC3" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DC4" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="NAK" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SYN" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ETB" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="CAN" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="EM" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SUB" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ESC" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="FS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="GS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="RS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="US" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Space" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Exclamation" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DoubleQuote" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="NumberSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DollarSgn" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="PercentSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Ampersand" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SingleQuote" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LeftParenthesis" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="RightParenthesis" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Asterisk" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="AdditionSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Comma" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SubtractionSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Period" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="ForwardSlash" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Zero" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="One" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Two" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Three" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Four" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Five" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Six" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Seven" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Eight" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Nine" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Colon" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="SemiColon" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LessThanSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="EqualSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="GreaterThanSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="QuestionMark" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="AtSign" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseA" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseB" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseC" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseD" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseE" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseF" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseG" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseH" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseI" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseJ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseK" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseL" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseM" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseN" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseO" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseP" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseQ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseR" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseT" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseU" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseV" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseW" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseX" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseY" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UpperCaseZ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LeftBracket" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="BackSlash" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="RightBracket" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Caret" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="UnderScore" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="GraveAccent" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseA" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseB" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseC" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseD" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseE" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseF" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseG" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseH" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseI" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseJ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseK" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseL" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseM" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseN" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseO" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseP" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseQ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseR" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseS" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseT" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseU" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseV" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseW" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseX" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseY" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LowerCaseZ" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="LeftBrace" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="VerticalPipe" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="RightBrace" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Tilde" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="DEL" DataType="STRING_01">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_01" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="AM" DataType="STRING_02">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_02" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="PM" DataType="STRING_02">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING_02" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+</Structure>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[- ASCII Contants -]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[FLL(1,ASCII,1)MOV(0,ASCII.NUL.DATA[0])MOV(1,ASCII.SOH.DATA[0])MOV(2,ASCII.STX.DATA[0])MOV(3,ASCII.ETX.DATA[0])MOV(4,ASCII.EOT.DATA[0])MOV(5,ASCII.ENQ.DATA[0])MOV(6,ASCII.ACK.DATA[0])MOV(7,ASCII.BEL.DATA[0])MOV(8,ASCII.BS.DATA[0])MOV(9,ASCII.HT.DATA[0])MOV(10,ASCII.LF.DATA[0])MOV(11,ASCII.VT.DATA[0])MOV(12,ASCII.FF.DATA[0])MOV(13,ASCII.CR.DATA[0])MOV(14,ASCII.SO.DATA[0])MOV(15,ASCII.SI.DATA[0])MOV(16,ASCII.DLE.DATA[0])MOV(17,ASCII.DC1.DATA[0])MOV(18,ASCII.DC2.DATA[0])MOV(19,ASCII.DC3.DATA[0])MOV(20,ASCII.DC4.DATA[0])MOV(21,ASCII.NAK.DATA[0])MOV(22,ASCII.SYN.DATA[0])MOV(23,ASCII.ETB.DATA[0])MOV(24,ASCII.CAN.DATA[0])MOV(25,ASCII.EM.DATA[0])MOV(26,ASCII.SUB.DATA[0])MOV(27,ASCII.ESC.DATA[0])MOV(28,ASCII.FS.DATA[0])MOV(29,ASCII.GS.DATA[0])MOV(30,ASCII.RS.DATA[0])MOV(31,ASCII.US.DATA[0])MOV(32,ASCII.Space.DATA[0])MOV(33,ASCII.Exclamation.DATA[0])MOV(34,ASCII.DoubleQuote.DATA[0])MOV(35,ASCII.NumberSign.DATA[0])MOV(36,ASCII.DollarSgn.DATA[0])MOV(37,ASCII.PercentSign.DATA[0])MOV(38,ASCII.Ampersand.DATA[0])MOV(39,ASCII.SingleQuote.DATA[0])MOV(40,ASCII.LeftParenthesis.DATA[0])MOV(41,ASCII.RightParenthesis.DATA[0])MOV(42,ASCII.Asterisk.DATA[0])MOV(43,ASCII.AdditionSign.DATA[0])MOV(44,ASCII.Comma.DATA[0])MOV(45,ASCII.SubtractionSign.DATA[0])MOV(46,ASCII.Period.DATA[0])MOV(47,ASCII.ForwardSlash.DATA[0])MOV(48,ASCII.Zero.DATA[0])MOV(49,ASCII.One.DATA[0])MOV(50,ASCII.Two.DATA[0])MOV(51,ASCII.Three.DATA[0])MOV(52,ASCII.Four.DATA[0])MOV(53,ASCII.Five.DATA[0])MOV(54,ASCII.Six.DATA[0])MOV(55,ASCII.Seven.DATA[0])MOV(56,ASCII.Eight.DATA[0])MOV(57,ASCII.Nine.DATA[0])MOV(58,ASCII.Colon.DATA[0])MOV(59,ASCII.SemiColon.DATA[0])MOV(60,ASCII.LessThanSign.DATA[0])MOV(61,ASCII.EqualSign.DATA[0])MOV(62,ASCII.GreaterThanSign.DATA[0])MOV(63,ASCII.QuestionMark.DATA[0])MOV(64,ASCII.AtSign.DATA[0])MOV(2,ASCII_Time.AM.LEN)MOV(2,ASCII_Time.PM.LEN)MOV(65,ASCII_Time.AM.DATA[0])MOV(77,ASCII_Time.AM.DATA[1])MOV(80,ASCII_Time.PM.DATA[0])MOV(77,ASCII_Time.PM.DATA[1]);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[- Time and Date Build -]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[[GSV(WallClockTime,,LocalDateTime,Time_Mapped.TimeAsDintArray.Year) ,NEQ(Time_Mapped.TimeAsDintArray.Year,Time_Mapped.Last.Year) OTE(Time_Mapped.Pulse.Year) MOV(Time_Mapped.TimeAsDintArray.Year,Time_Mapped.Last.Year) ,NEQ(Time_Mapped.TimeAsDintArray.Month,Time_Mapped.Last.Month) OTE(Time_Mapped.Pulse.Month) MOV(Time_Mapped.TimeAsDintArray.Month,Time_Mapped.Last.Month) ,NEQ(Time_Mapped.TimeAsDintArray.Day,Time_Mapped.Last.Day) OTE(Time_Mapped.Pulse.Day) MOV(Time_Mapped.TimeAsDintArray.Day,Time_Mapped.Last.Day) ,NEQ(Time_Mapped.TimeAsDintArray.Minute,Time_Mapped.Last.Minute) OTE(Time_Mapped.Pulse.Minute) MOV(Time_Mapped.TimeAsDintArray.Minute,Time_Mapped.Last.Minute) ,NEQ(Time_Mapped.TimeAsDintArray.Second,Time_Mapped.Last.Second) OTE(Time_Mapped.Pulse.Second) MOV(Time_Mapped.TimeAsDintArray.Second,Time_Mapped.Last.Second) ,GRT(Time_Mapped.TimeAsDintArray.mSec,500000) OTE(Time_Mapped.Pulse.FlashHalfSec) ,XIC(Time_Mapped.TimeAsDintArray.Second.0) OTE(Time_Mapped.Pulse.Flash1Sec) ,XIC(Time_Mapped.TimeAsDintArray.Second.1) OTE(Time_Mapped.Pulse.Flash2Sec) ];]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[[NEQ(Time_Mapped.TimeAsDintArray.Hour,Time_Mapped.TimeAsDintArray.TimeHourTemp) [MOV(Time_Mapped.TimeAsDintArray.Hour,Time_Mapped.TimeAsDintArray.TimeHourTemp) ,SUB(Time_Mapped.TimeAsDintArray.TimeHourTemp,6,Time_Mapped.TimeAsDintArray.TimeHourCorrection) ] ,MOV(Time_Mapped.TimeAsDintArray.Hour,Time_Mapped.TimeAsDintArray.TimeHourCorrection) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[XIC(TwelveHourFormat)[LIM(1,Time_Mapped.TimeAsDintArray.TimeHourCorrection,12) MOV(Time_Mapped.TimeAsDintArray.TimeHourCorrection,TimeAsDintArray_Time12HoursFormat) ,LIM(13,Time_Mapped.TimeAsDintArray.TimeHourCorrection,0) SUB(Time_Mapped.TimeAsDintArray.TimeHourCorrection,12,TimeAsDintArray_Time12HoursFormat) ,ABS(TimeAsDintArray_Time12HoursFormat,TimeAsDintArray_Time12HoursFormat) DTOS(TimeAsDintArray_Time12HoursFormat,Time_Mapped.TimeAsStringArray.Hour) EQU(Time_Mapped.TimeAsStringArray.Hour.LEN,1) INSERT(Time_Mapped.TimeAsStringArray.Hour,ASCII.Zero,1,Time_Mapped.TimeAsStringArray.Hour) ];]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[XIO(TwelveHourFormat)DTOS(Time_Mapped.TimeAsDintArray.Hour,Time_Mapped.TimeAsStringArray.Hour)EQU(Time_Mapped.TimeAsStringArray.Hour.LEN,1)INSERT(Time_Mapped.TimeAsStringArray.Hour,ASCII.Zero,1,Time_Mapped.TimeAsStringArray.Hour);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[[DTOS(Time_Mapped.TimeAsDintArray.Year,Time_Mapped.TimeAsStringArray.Year) ,DTOS(Time_Mapped.TimeAsDintArray.Month,Time_Mapped.TimeAsStringArray.Month) EQU(Time_Mapped.TimeAsStringArray.Month.LEN,1) INSERT(Time_Mapped.TimeAsStringArray.Month,ASCII.Zero,1,Time_Mapped.TimeAsStringArray.Month) ,DTOS(Time_Mapped.TimeAsDintArray.Day,Time_Mapped.TimeAsStringArray.Date) EQU(Time_Mapped.TimeAsStringArray.Date.LEN,1) INSERT(Time_Mapped.TimeAsStringArray.Date,ASCII.Zero,1,Time_Mapped.TimeAsStringArray.Date) ,DTOS(Time_Mapped.TimeAsDintArray.Minute,Time_Mapped.TimeAsStringArray.Minute) EQU(Time_Mapped.TimeAsStringArray.Minute.LEN,1) INSERT(Time_Mapped.TimeAsStringArray.Minute,ASCII.Zero,1,Time_Mapped.TimeAsStringArray.Minute) ,DTOS(Time_Mapped.TimeAsDintArray.Second,Time_Mapped.TimeAsStringArray.Second) EQU(Time_Mapped.TimeAsStringArray.Second.LEN,1) INSERT(Time_Mapped.TimeAsStringArray.Second,ASCII.Zero,1,Time_Mapped.TimeAsStringArray.Second) ];]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[[MOV(0,Time_Mapped.TimeAsString.LEN) ,GRT(Time_Mapped.TimeAsDintArray.Hour,12) INSERT(Time_Mapped.TimeAsString,ASCII_Time.PM,1,Time_Mapped.TimeAsString) ,LES(Time_Mapped.TimeAsDintArray.Hour,12) INSERT(Time_Mapped.TimeAsString,ASCII_Time.AM,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,Time_Mapped.TimeAsStringArray.Second,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,ASCII.Colon,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,Time_Mapped.TimeAsStringArray.Minute,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,ASCII.Colon,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,Time_Mapped.TimeAsStringArray.Hour,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,ASCII.Space,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,Time_Mapped.TimeAsStringArray.Year,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,ASCII.ForwardSlash,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,Time_Mapped.TimeAsStringArray.Date,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,ASCII.ForwardSlash,1,Time_Mapped.TimeAsString) ,INSERT(Time_Mapped.TimeAsString,Time_Mapped.TimeAsStringArray.Month,1,Time_Mapped.TimeAsString) ];]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[LIM(0,Time_Mapped.TimeAsDintArray.Second,1)[[XIC(Time_Mapped.Pulse.Year) ,XIC(Time_Mapped.Pulse.Year2Sec) ] OTE(Time_Mapped.Pulse.Year2Sec) ,[XIC(Time_Mapped.Pulse.Month) ,XIC(Time_Mapped.Pulse.Month2Sec) ] OTE(Time_Mapped.Pulse.Month2Sec) ,[XIC(Time_Mapped.Pulse.Day) ,XIC(Time_Mapped.Pulse.Day2Sec) ] OTE(Time_Mapped.Pulse.Day2Sec) ,[XIC(Time_Mapped.Pulse.Hour) ,XIC(Time_Mapped.Pulse.Hour2Sec) ] OTE(Time_Mapped.Pulse.Hour2Sec) ,[XIC(Time_Mapped.Pulse.Minute) ,XIC(Time_Mapped.Pulse.Minute2Sec) ] OTE(Time_Mapped.Pulse.Minute2Sec) ];]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[- Days Of The Week -]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[DayOfWeek(DayOfWeek,Time_Mapped.TimeAsDintArray.Year,Time_Mapped.TimeAsDintArray.Month,Time_Mapped.TimeAsDintArray.Day);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Text>
+<![CDATA[XIC(DayOfWeek.Sunday)OTE(Time_Mapped.DayOfWeek.Sunday);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Text>
+<![CDATA[XIC(DayOfWeek.Monday)OTE(Time_Mapped.DayOfWeek.Monday);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[XIC(DayOfWeek.Tuesday)OTE(Time_Mapped.DayOfWeek.Tuesday);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[XIC(DayOfWeek.Wednesday)OTE(Time_Mapped.DayOfWeek.Wednesday);]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Text>
+<![CDATA[XIC(DayOfWeek.Thursday)OTE(Time_Mapped.DayOfWeek.Thursday);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Text>
+<![CDATA[XIC(DayOfWeek.Friday)OTE(Time_Mapped.DayOfWeek.Friday);]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Text>
+<![CDATA[XIC(DayOfWeek.Saturday)OTE(Time_Mapped.DayOfWeek.Saturday);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="GeneralConstants_ASCIIStrings"/>
+<Dependency Type="AddOnInstructionDefinition" Name="DayOfWeek"/>
+<Dependency Type="DataType" Name="TimeStamp"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+<WallClockTime Use="Reference">
+</WallClockTime>
+</Controller>
+</RSLogix5000Content>

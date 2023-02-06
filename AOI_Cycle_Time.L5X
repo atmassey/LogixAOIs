@@ -1,0 +1,724 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Cycle Time-->
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="20.05" TargetName="AOI_Cycle_Time" TargetType="AddOnInstructionDefinition" TargetClass="Standard" TargetRevision="1.0 " TargetLastEdited="2016-04-21T11:30:12.565Z" ContainsContext="true" Owner="Information Technology, Bowling Green Metalforming" ExportDate="Sat Oct 29 19:59:05 2022" ExportOptions="References DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans"
+>
+<Controller Use="Context" Name="C1_E2_Rears_MCP6A">
+<DataTypes Use="Context">
+<DataType Name="z_ap_Station_Cycle_Time_Summary" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZz_ap_Stati0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Enable" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZz_ap_Stati0" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Enable
+(Active)]]>
+</Description>
+</Member>
+<Member Name="Timing" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZz_ap_Stati0" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Timing]]>
+</Description>
+</Member>
+<Member Name="Design_Rate" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Designed
+Cycle Time]]>
+</Description>
+</Member>
+<Member Name="Current" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Current
+Cycle Time
+(seconds)]]>
+</Description>
+</Member>
+<Member Name="Average" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Average]]>
+</Description>
+</Member>
+<Member Name="Best" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Best
+Recorded Time]]>
+</Description>
+</Member>
+<Member Name="History_Log" DataType="REAL" Dimension="20" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[History Log]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_Cycle_Time" Class="Standard" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2016-02-09T18:44:21.526Z" CreatedBy="MDK\mvanvelzer" EditedDate="2016-04-21T11:30:12.565Z" EditedBy="MDK\mvanvelzer"
+ SoftwareRevision="v20.01">
+<Description>
+<![CDATA[Cycle Time]]>
+</Description>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input
+-
+System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output
+-
+System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Cycle_Time_Data_Tag" TagType="Base" DataType="z_ap_Station_Cycle_Time_Summary" Usage="InOut" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[Cycle Time Data Tag
+--------------------]]>
+</Description>
+</Parameter>
+<Parameter Name="INPUT_Enable" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Enable]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="INPUT_Design_Rate" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Design Rate
+(sec)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="INPUT_Start_Timing_Pulse" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Start Timing
+Pulse Signal]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="INPUT_Stop_Timing_Pulse" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Stop Timing
+Pulse Signal]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="INPUT_Reset_for_New_Cycle" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Reset
+for
+New Cycle
+(Pulse)]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="INPUT_Reset_Best_Time" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Reset
+Best Time
+Recorded]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="INPUT_Reset_History_to_Zero" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Reset
+History Log
+to
+Zero]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="INPUT_Reset_History_to_Design_Rate" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Reset
+History Log
+to
+Design Rate]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Current" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Current Time
+(sec)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Last" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #1
+Indicator
+(Last)]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_02" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #2
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_03" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #3
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_04" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #4
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_05" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #5
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_06" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #6
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_07" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #7
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_08" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #8
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_09" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #9
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_10" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #10
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_11" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #11
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_12" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #12
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_13" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #13
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_14" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #14
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_15" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #15
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_16" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #16
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_17" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #17
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_18" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #18
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_19" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #19
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="History_20" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[History Log
+Record #20
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Average_of_the_Last_20" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Average Time
+of the
+Last 20 Times
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Best_Time_Recorded" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Best
+Time Recorded
+Indicator]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Enabled_Indicator" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Enabled
+Indicator]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Timing_Indicator" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Timing
+Indicator]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Reset_ONS" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Reset
+for
+Next Cycle
+(One-Shot)]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Reset_Memory" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Reset
+for
+Next Cycle
+(Memory Latch)]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Timer" DataType="TIMER" ExternalAccess="None">
+<Description>
+<![CDATA[Timer
+(msec)]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="History_Log_FIFO_Update_ONS" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[History Log
+-
+FIFO
+Update
+(One-Shot)]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="History_Log_FIFO_CTRL" DataType="CONTROL" ExternalAccess="None">
+<Description>
+<![CDATA[History Log
+-
+FIFO
+Control Word]]>
+</Description>
+<DefaultData>00 00 00 00 14 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="CONTROL">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="20"/>
+<DataValueMember Name="POS" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EM" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ER" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UL" DataType="BOOL" Value="0"/>
+<DataValueMember Name="IN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FD" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="History_Log" DataType="REAL" Dimensions="20" Radix="Float" ExternalAccess="None">
+<Description>
+<![CDATA[History Log]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<Array DataType="REAL" Dimensions="20" Radix="Float">
+<Element Index="[0]" Value="0.0"/>
+<Element Index="[1]" Value="0.0"/>
+<Element Index="[2]" Value="0.0"/>
+<Element Index="[3]" Value="0.0"/>
+<Element Index="[4]" Value="0.0"/>
+<Element Index="[5]" Value="0.0"/>
+<Element Index="[6]" Value="0.0"/>
+<Element Index="[7]" Value="0.0"/>
+<Element Index="[8]" Value="0.0"/>
+<Element Index="[9]" Value="0.0"/>
+<Element Index="[10]" Value="0.0"/>
+<Element Index="[11]" Value="0.0"/>
+<Element Index="[12]" Value="0.0"/>
+<Element Index="[13]" Value="0.0"/>
+<Element Index="[14]" Value="0.0"/>
+<Element Index="[15]" Value="0.0"/>
+<Element Index="[16]" Value="0.0"/>
+<Element Index="[17]" Value="0.0"/>
+<Element Index="[18]" Value="0.0"/>
+<Element Index="[19]" Value="0.0"/>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="History_Log_FIFO_Dump" DataType="REAL" Radix="Float" ExternalAccess="None">
+<Description>
+<![CDATA[History Log
+-
+FIFO
+Dump Register]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="History_Average_CAL_CTRL" DataType="CONTROL" ExternalAccess="None">
+<Description>
+<![CDATA[History Log
+-
+Average
+Calculation
+Control Word]]>
+</Description>
+<DefaultData>00 00 00 00 14 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="CONTROL">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="20"/>
+<DataValueMember Name="POS" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EM" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ER" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UL" DataType="BOOL" Value="0"/>
+<DataValueMember Name="IN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FD" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Start_Timing" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Start Timing
+(Memory Latch)]]>
+</Description>
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+CYCLE TIME
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>
+PRESET VALUES
+<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>]]>
+</Comment>
+<Text>
+<![CDATA[[MOV(20,History_Log_FIFO_CTRL.POS) MOV(20,History_Log_FIFO_CTRL.LEN) ,MOV(20,History_Average_CAL_CTRL.LEN) ];]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>
+LOGIC
+<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>]]>
+</Comment>
+<Text>
+<![CDATA[XIC(INPUT_Reset_for_New_Cycle)ONS(Reset_ONS)OTL(Reset_Memory);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[[XIC(INPUT_Start_Timing_Pulse) XIO(INPUT_Stop_Timing_Pulse) OTL(Start_Timing) ,XIC(INPUT_Stop_Timing_Pulse) OTU(Start_Timing) ];]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[XIC(INPUT_Enable)[XIC(Start_Timing) XIO(Reset_Memory) MOV(9999999,Timer.PRE) RTO(Timer,?,?) ,DIV(Timer.ACC,1000,Current) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[XIC(Reset_Memory)[ONS(History_Log_FIFO_Update_ONS) XIC(History_Log_FIFO_CTRL.DN) FFU(History_Log[0],History_Log_FIFO_Dump,History_Log_FIFO_CTRL,?,?) ,XIO(History_Log_FIFO_CTRL.DN) FFL(Current,History_Log[0],History_Log_FIFO_CTRL,?,?) ,AVE(History_Log[0],0,Average_of_the_Last_20,History_Average_CAL_CTRL,?,?) ];]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[XIC(Reset_Memory)LIM(0.01,Current,Best_Time_Recorded)MOV(Current,Best_Time_Recorded);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[XIC(Reset_Memory)[RES(Timer) ,OTU(Reset_Memory) ];]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Comment>
+<![CDATA[<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>
+CLEAR DATA
+<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>]]>
+</Comment>
+<Text>
+<![CDATA[XIC(INPUT_Reset_Best_Time)MOV(9999,Best_Time_Recorded);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[XIC(INPUT_Reset_History_to_Zero)MOV(0,Average_of_the_Last_20)FLL(0,History_Log[0],20);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Text>
+<![CDATA[XIC(INPUT_Reset_History_to_Design_Rate)MOV(INPUT_Design_Rate,Average_of_the_Last_20)FLL(INPUT_Design_Rate,History_Log[0],20);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>
+AOI
+Indicators
+<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(INPUT_Enable) OTE(Enabled_Indicator) ,XIC(Timer.EN) OTE(Timing_Indicator) ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Text>
+<![CDATA[[MOV(History_Log[19],Last) MOV(History_Log[18],History_02) MOV(History_Log[17],History_03) MOV(History_Log[16],History_04) MOV(History_Log[15],History_05) ,MOV(History_Log[14],History_06) MOV(History_Log[13],History_07) MOV(History_Log[12],History_08) MOV(History_Log[11],History_09) MOV(History_Log[10],History_10) ,MOV(History_Log[9],History_11) MOV(History_Log[8],History_12) MOV(History_Log[7],History_13) MOV(History_Log[6],History_14) MOV(History_Log[5],History_15) ,MOV(History_Log[4],History_16) MOV(History_Log[3],History_17) MOV(History_Log[2],History_18) MOV(History_Log[1],History_19) MOV(History_Log[0],History_20) ];]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>
+CYCLE TIME - DATA TAG - WRITE
+<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(INPUT_Enable) OTE(Cycle_Time_Data_Tag.Enable) ,XIC(Timer.EN) OTE(Cycle_Time_Data_Tag.Timing) ];]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[MOV(INPUT_Design_Rate,Cycle_Time_Data_Tag.Design_Rate)MOV(Current,Cycle_Time_Data_Tag.Current)MOV(Average_of_the_Last_20,Cycle_Time_Data_Tag.Average)MOV(Best_Time_Recorded,Cycle_Time_Data_Tag.Best);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[[MOV(History_Log[19],Cycle_Time_Data_Tag.History_Log[0]) MOV(History_Log[18],Cycle_Time_Data_Tag.History_Log[1]) MOV(History_Log[17],Cycle_Time_Data_Tag.History_Log[2]) MOV(History_Log[16],Cycle_Time_Data_Tag.History_Log[3]) MOV(History_Log[15],Cycle_Time_Data_Tag.History_Log[4]) ,MOV(History_Log[14],Cycle_Time_Data_Tag.History_Log[5]) MOV(History_Log[13],Cycle_Time_Data_Tag.History_Log[6]) MOV(History_Log[12],Cycle_Time_Data_Tag.History_Log[7]) MOV(History_Log[11],Cycle_Time_Data_Tag.History_Log[8]) MOV(History_Log[10],Cycle_Time_Data_Tag.History_Log[9]) ,MOV(History_Log[9],Cycle_Time_Data_Tag.History_Log[10]) MOV(History_Log[8],Cycle_Time_Data_Tag.History_Log[11]) MOV(History_Log[7],Cycle_Time_Data_Tag.History_Log[12]) MOV(History_Log[6],Cycle_Time_Data_Tag.History_Log[13]) MOV(History_Log[5],Cycle_Time_Data_Tag.History_Log[14]) ,MOV(History_Log[4],Cycle_Time_Data_Tag.History_Log[15]) MOV(History_Log[3],Cycle_Time_Data_Tag.History_Log[16]) MOV(History_Log[2],Cycle_Time_Data_Tag.History_Log[17]) MOV(History_Log[1],Cycle_Time_Data_Tag.History_Log[18]) MOV(History_Log[0],Cycle_Time_Data_Tag.History_Log[19]) ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="z_ap_Station_Cycle_Time_Summary"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

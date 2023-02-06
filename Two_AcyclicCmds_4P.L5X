@@ -1,0 +1,712 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.02" TargetName="Two_AcyclicCmds_4P" TargetType="AddOnInstructionDefinition" TargetRevision="1.1 " TargetLastEdited="2020-07-09T15:32:32.583Z" ContainsContext="true" Owner="ushoopla, ifm" ExportDate="Thu Jul 09 11:34:50 2020" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="Test1">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="Two_AcyclicCmds_4P" Revision="1.1" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2019-04-05T19:14:24.156Z" CreatedBy="INTRAIFM\ushoopla" EditedDate="2020-07-09T15:32:32.583Z" EditedBy="INTRAIFM\ushoopla" SoftwareRevision="v32.02"
+>
+<RevisionNote>
+<![CDATA[3/26/20 : On device not connected the Cmd1_DN, Cmd2_DN, Cmds_DN and Cmd_Error output bits are unlatched. 
+If all Cmd Index 0, then commands are still cycled so the AL1x2x_Rdy an Cmds_DN bit still toggle on/off when the AOI is triggered. ]]>
+</RevisionNote>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="PLC_Input" TagType="Base" DataType="INT" Dimensions="123" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="PLC_Output" TagType="Base" DataType="INT" Dimensions="87" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="IOL_Mode" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Device_Not_Connected" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="AL1x2x_Cmd_Rdy" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="AOI_Settings_Error" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmds_Busy" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd1_DN" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd2_DN" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmds_DN" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd_Errors" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="IOLinkMaster_Name" TagType="Base" DataType="DINT" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="Port_Number" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Vendor_ID" TagType="Base" DataType="INT" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Device_ID" TagType="Base" DataType="INT" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd1_Index" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd1_Subindex" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd1_Rd_Wr" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd1_ByteLength" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd1_RdWr_Buffer" TagType="Base" DataType="SINT" Dimensions="32" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="Cmd2_Index" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd2_Subindex" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd2_Rd_Wr" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd2_ByteLength" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd2_RdWr_Buffer" TagType="Base" DataType="SINT" Dimensions="32" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="Cmd_Trigger" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Cmd_Error_Codes" TagType="Base" DataType="INT" Dimensions="2" Usage="InOut" Radix="Hex" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="TimeOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Cmd1" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Skip_Cmd1" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd1_DN_Error" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd2" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Skip_Cmd2" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd2_DN_Error" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd1_Trigger" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd2_Trigger" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd1ReleaseTrigger" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd2ReleaseTrigger" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd2TriggerDelay" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,20,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="20"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd1_PLC_OutTrigger" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TriggerCmdBuffer_ONS" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="PLCTrigger" DataType="SINT" Radix="Binary" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Binary" Value="2#0000_0000"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="RealPort_Num" DataType="SINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Offset_Address" DataType="INT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd1_Busy" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd2_Busy" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Offset_StatusFlgs" DataType="INT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="StatusFlgs_Offset" DataType="INT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TimeOut1" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,6000,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="6000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TimeOut2" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,6000,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="6000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TimeOut1_Signal" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TimeOut2_Signal" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="AL1x2x_Cmd_Rdy_Timer" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,20,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="20"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="DevNotConn_Signal" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Signal to Latch when device is disconnected]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="NoCmdSet" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="SimCmdTimer" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,20,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="20"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cmd2ReleaseTrigger_Signal" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[LEQ(Port_Number,4)NEQ(Port_Number,0)SUB(Port_Number,1,RealPort_Num)MUL(9,RealPort_Num,Offset_StatusFlgs)ADD(Offset_StatusFlgs,23,StatusFlgs_Offset);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[[XIC(PLC_Input[StatusFlgs_Offset].0) OTE(IOL_Mode) ,XIC(PLC_Input[StatusFlgs_Offset].1) [OTE(Device_Not_Connected) ,OTL(DevNotConn_Signal) ] ,MOV(PLC_Input[StatusFlgs_Offset+1],Vendor_ID) ,MOV(PLC_Input[StatusFlgs_Offset+2],Device_ID) ];]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[[EQU(Port_Number,0) ,GRT(Port_Number,4) ,NEQ(Cmd1_Index,0) EQU(Cmd1_Rd_Wr,0) ,NEQ(Cmd2_Index,0) EQU(Cmd2_Rd_Wr,0) ,GRT(Cmd1_Rd_Wr,2) ,GRT(Cmd2_Rd_Wr,2) ,NEQ(Cmd1_Index,0) EQU(Cmd1_Rd_Wr,2) EQU(Cmd1_ByteLength,0) ,NEQ(Cmd2_Index,0) EQU(Cmd2_Rd_Wr,2) EQU(Cmd2_ByteLength,0) ]OTE(AOI_Settings_Error);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[EQU(Cmd1_Index,0)EQU(Cmd2_Index,0)OTE(NoCmdSet);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[[XIC(Device_Not_Connected) [OTU(Cmd1_DN) ,OTU(Cmd2_DN) ,OTU(Cmds_DN) ,OTU(Cmd_Errors) ] ,XIC(AOI_Settings_Error) ]OTU(AL1x2x_Cmd_Rdy);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[When ConfigCmd_Trigger input, Cmds Busy and/or malilbox trigger is set AL1x2x_Cmd_Rdy is set.
+Word PLC_Ouput[22] is used to determine if the mailbox is in use. ]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(PLC_Output[5].7) ,XIC(Cmds_Busy) ,XIC(Cmd_Trigger) XIO(AL1x2x_Cmd_Rdy) XIO(DevNotConn_Signal) ][OTE(IOLinkMaster_Name.[RealPort_Num+8]) ,OTU(AL1x2x_Cmd_Rdy) ];]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[XIO(Cmd_Trigger)OTU(DevNotConn_Signal);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[EQU(IOLinkMaster_Name,0)XIO(Cmd_Trigger)XIO(Device_Not_Connected)XIO(AOI_Settings_Error)TON(AL1x2x_Cmd_Rdy_Timer,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[XIC(AL1x2x_Cmd_Rdy_Timer.DN)OTL(AL1x2x_Cmd_Rdy);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[XIC(Cmd_Trigger)XIO(Device_Not_Connected)XIC(AL1x2x_Cmd_Rdy)ONS(TriggerCmdBuffer_ONS)[OTL(Cmd1) ,[OTU(Cmd1_DN) ,OTU(Cmd2_DN) ,OTU(Cmd1_DN_Error) ,OTU(Cmd2_DN_Error) ,OTU(Cmds_DN) ,OTU(Cmd_Errors) ,OTU(TimeOut) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Text>
+<![CDATA[XIC(Cmd1)NEQ(Cmd1_Index,0)OTE(Cmd1_Trigger);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[XIC(Cmd2)[NEQ(Cmd2_Index,0) ,XIC(NoCmdSet) ]OTE(Cmd2_Trigger);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Text>
+<![CDATA[XIC(Cmd1)XIO(Cmd2)[[MOV(Port_Number,PLC_Output[2]) ,MOV(Cmd1_Index,PLC_Output[3]) ,MOV(Cmd1_Subindex,PLC_Output[4]) ,BTD(Cmd1_Rd_Wr,0,PLC_Output[5],0,2) ,BTD(Cmd1_ByteLength,0,PLC_Output[5],8,8) ,COP(Cmd1_RdWr_Buffer[0],PLC_Output[6],16) ] ,EQU(Cmd1_Index,0) OTE(Skip_Cmd1) ];]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Text>
+<![CDATA[[XIC(Cmd1) XIO(Cmd2) XIC(Cmd1_Busy) XIC(PLC_Input[5].7) EQU(PLC_Input[3],Cmd1_Index) [[EQU(PLC_Input[5],129) ,EQU(PLC_Input[5],130) ] OTL(Cmd1_DN) ,NEQ(PLC_Input[5],129) NEQ(PLC_Input[5],130) OTL(Cmd1_DN_Error) ] ,XIC(Skip_Cmd1) ]OTL(Cmd1ReleaseTrigger);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[XIC(Cmd1_DN)XIC(Cmd1)XIO(Cmd2)[EQU(Cmd1_Rd_Wr,1) [BTD(PLC_Input[6],8,Cmd1_RdWr_Buffer[0],0,8) ,COP(PLC_Input[7],Cmd1_RdWr_Buffer[1],32) ] ,[EQU(Cmd1_Rd_Wr,1) ,EQU(Cmd1_Rd_Wr,2) ] [BTD(0,8,Cmd_Error_Codes[0],8,8) ,BTD(0,0,Cmd_Error_Codes[0],0,8) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[XIC(Cmd1_DN_Error)XIC(Cmd1)XIO(Cmd2)[EQU(Cmd1_Rd_Wr,1) ,EQU(Cmd1_Rd_Wr,2) ][BTD(PLC_Input[6],8,Cmd_Error_Codes[0],8,8) ,BTD(PLC_Input[7],0,Cmd_Error_Codes[0],0,8) ];]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Text>
+<![CDATA[XIC(Cmd1ReleaseTrigger)XIO(PLC_Output[5].7)OTL(Cmd2);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Text>
+<![CDATA[XIC(Cmd2)XIO(Cmds_DN)[[MOV(Cmd2_Index,PLC_Output[3]) ,MOV(Cmd2_Subindex,PLC_Output[4]) ,BTD(Cmd2_Rd_Wr,0,PLC_Output[5],0,2) ,BTD(Cmd2_ByteLength,0,PLC_Output[5],8,8) ,COP(Cmd2_RdWr_Buffer[0],PLC_Output[6],16) ] ,EQU(Cmd2_Index,0) OTE(Skip_Cmd2) ];]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Text>
+<![CDATA[XIO(NoCmdSet)[XIC(Cmd2) XIO(Cmds_DN) XIC(Cmd2_Busy) XIC(PLC_Input[5].7) EQU(PLC_Input[3],Cmd2_Index) [[EQU(PLC_Input[5],129) ,EQU(PLC_Input[5],130) ] OTL(Cmd2_DN) ,NEQ(PLC_Input[5],129) NEQ(PLC_Input[5],130) OTL(Cmd2_DN_Error) ] ,XIC(Skip_Cmd2) ]OTE(Cmd2ReleaseTrigger_Signal);]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Text>
+<![CDATA[XIC(NoCmdSet)XIC(Cmd2)XIO(Cmds_DN)TON(SimCmdTimer,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Text>
+<![CDATA[[XIC(Cmd2ReleaseTrigger_Signal) ,XIC(SimCmdTimer.DN) ]OTL(Cmd2ReleaseTrigger);]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Text>
+<![CDATA[XIC(Cmd2_DN)XIC(Cmd2)XIO(Cmds_DN)EQU(Cmd2_Rd_Wr,1)[[BTD(PLC_Input[6],8,Cmd2_RdWr_Buffer[0],0,8) ,COP(PLC_Input[7],Cmd2_RdWr_Buffer[1],32) ] ,[EQU(Cmd2_Rd_Wr,1) ,EQU(Cmd2_Rd_Wr,2) ] [BTD(0,8,Cmd_Error_Codes[1],8,8) ,BTD(0,0,Cmd_Error_Codes[1],0,8) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="22" Type="N">
+<Text>
+<![CDATA[XIC(Cmd2_DN_Error)XIC(Cmd2)XIO(Cmds_DN)[EQU(Cmd2_Rd_Wr,1) ,EQU(Cmd2_Rd_Wr,2) ][BTD(PLC_Input[6],8,Cmd_Error_Codes[1],8,8) ,BTD(PLC_Input[7],0,Cmd_Error_Codes[1],0,8) ];]]>
+</Text>
+</Rung>
+<Rung Number="23" Type="N">
+<Text>
+<![CDATA[XIC(Cmd2ReleaseTrigger)XIO(PLC_Output[5].7)XIO(Device_Not_Connected)OTL(Cmds_DN);]]>
+</Text>
+</Rung>
+<Rung Number="24" Type="N">
+<Text>
+<![CDATA[XIC(Cmd1_Trigger)XIO(Cmd1ReleaseTrigger)XIO(Device_Not_Connected)OTE(Cmd1_PLC_OutTrigger);]]>
+</Text>
+</Rung>
+<Rung Number="25" Type="N">
+<Text>
+<![CDATA[XIC(Cmd2_Trigger)XIO(Cmd2ReleaseTrigger)XIO(Device_Not_Connected)TON(Cmd2TriggerDelay,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="26" Type="N">
+<Text>
+<![CDATA[[XIC(Cmd1_PLC_OutTrigger) ,XIC(Cmd2TriggerDelay.DN) ]MOV(1,PLCTrigger);]]>
+</Text>
+</Rung>
+<Rung Number="27" Type="N">
+<Text>
+<![CDATA[XIC(Cmd1_PLC_OutTrigger)EQU(PLCTrigger,1)XIO(PLC_Input[5].7)OTL(Cmd1_Busy);]]>
+</Text>
+</Rung>
+<Rung Number="28" Type="N">
+<Text>
+<![CDATA[XIC(Cmd2TriggerDelay.DN)EQU(PLCTrigger,1)XIO(PLC_Input[5].7)OTL(Cmd2_Busy);]]>
+</Text>
+</Rung>
+<Rung Number="29" Type="N">
+<Text>
+<![CDATA[[XIO(Cmd1_PLC_OutTrigger) XIO(Cmd2TriggerDelay.DN) ,GRT(TimeOut1.ACC,5000) ,GRT(TimeOut2.ACC,5000) ]MOV(0,PLCTrigger);]]>
+</Text>
+</Rung>
+<Rung Number="30" Type="N">
+<Text>
+<![CDATA[EQU(PLCTrigger,1)BTD(PLCTrigger,0,PLC_Output[5],7,1);]]>
+</Text>
+</Rung>
+<Rung Number="31" Type="N">
+<Text>
+<![CDATA[[XIC(Cmd1) ,XIC(Cmd2) ]EQU(PLCTrigger,0)BTD(PLCTrigger,0,PLC_Output[5],7,1);]]>
+</Text>
+</Rung>
+<Rung Number="32" Type="N">
+<Text>
+<![CDATA[[XIC(Cmd1_DN_Error) ,XIC(Cmd2_DN_Error) ]OTL(Cmd_Errors);]]>
+</Text>
+</Rung>
+<Rung Number="33" Type="N">
+<Text>
+<![CDATA[[XIC(Cmd1_Busy) ,XIC(Cmd2_Busy) ]XIO(Cmds_DN)XIO(Device_Not_Connected)OTE(Cmds_Busy);]]>
+</Text>
+</Rung>
+<Rung Number="34" Type="N">
+<Text>
+<![CDATA[[[XIC(Cmd1ReleaseTrigger) XIC(Cmd2ReleaseTrigger) XIC(Cmds_DN) ,GRT(TimeOut1.ACC,5000) OTE(TimeOut1_Signal) ,GRT(TimeOut2.ACC,5000) OTE(TimeOut2_Signal) ] XIO(Cmd_Trigger) ,XIC(Device_Not_Connected) ][OTU(Cmd1) ,OTU(Cmd2) ,OTU(Cmd1ReleaseTrigger) ,OTU(Cmd2ReleaseTrigger) ,OTU(Cmd1_Busy) ,OTU(Cmd2_Busy) ];]]>
+</Text>
+</Rung>
+<Rung Number="35" Type="N">
+<Text>
+<![CDATA[XIC(Cmds_Busy)RTO(TimeOut1,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="36" Type="N">
+<Text>
+<![CDATA[XIC(Cmd1)RTO(TimeOut2,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="37" Type="N">
+<Text>
+<![CDATA[GRT(TimeOut1.ACC,0)XIO(Cmds_Busy)RES(TimeOut1);]]>
+</Text>
+</Rung>
+<Rung Number="38" Type="N">
+<Text>
+<![CDATA[GRT(TimeOut2.ACC,0)XIO(Cmd1)RES(TimeOut2);]]>
+</Text>
+</Rung>
+<Rung Number="39" Type="N">
+<Text>
+<![CDATA[XIC(Cmds_Busy)RTO(TimeOut1,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="40" Type="N">
+<Text>
+<![CDATA[XIC(Cmd1)RTO(TimeOut2,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="41" Type="N">
+<Text>
+<![CDATA[GRT(TimeOut1.ACC,0)XIO(Cmds_Busy)RES(TimeOut1);]]>
+</Text>
+</Rung>
+<Rung Number="42" Type="N">
+<Text>
+<![CDATA[GRT(TimeOut2.ACC,0)XIO(Cmd1)RES(TimeOut2);]]>
+</Text>
+</Rung>
+<Rung Number="43" Type="N">
+<Text>
+<![CDATA[[XIC(TimeOut1_Signal) ,XIC(TimeOut2_Signal) ]XIO(Cmd_Trigger)XIO(Cmds_DN)OTL(TimeOut);]]>
+</Text>
+</Rung>
+<Rung Number="44" Type="N">
+<Text>
+<![CDATA[XIC(TimeOut)OTU(Cmds_DN);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

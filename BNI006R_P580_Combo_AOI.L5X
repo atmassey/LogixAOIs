@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="33.01" TargetName="BNI006R_P580_Combo" TargetType="AddOnInstructionDefinition" TargetClass="Standard" TargetRevision="1.0 " TargetLastEdited="2022-07-13T18:25:21.772Z" ContainsContext="true" Owner="Information Technology, Bowling Green Metalforming" ExportDate="Fri Sep 23 15:46:04 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans"
+>
+<Controller Use="Context" Name="Lab0">
+<DataTypes Use="Context">
+<DataType Name="IO_Link_Port_Data" Family="NoFamily" Class="User">
+<Members>
+<Member Name="Inputs" DataType="SINT" Dimension="48" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Outputs" DataType="SINT" Dimension="48" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="Numatic_Manifold" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[BNI IOL-751-V13-K007 IO Map]]>
+</Description>
+<Members>
+<Member Name="I" DataType="Numatic_Manifold_Inputs" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="O" DataType="Numatic_Manifold_Outputs" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="Numatic_Manifold_Inputs"/>
+<Dependency Type="DataType" Name="Numatic_Manifold_Outputs"/>
+</Dependencies>
+</DataType>
+<DataType Name="Numatic_Manifold_Inputs" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[BNI IOL-751-V13-K007 Input Map]]>
+</Description>
+<Members>
+<Member Name="ZZZZZZZZZZNumatic_Ma0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Device_OK" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Mismatch_Fault" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Comm_Fault" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Validation_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Event_1_Error_Code" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Event_1_Add_Code_1" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Event_1_Add_Code_2" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Event_2_Error_Code" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Event_2_Add_Code_1" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Event_2_Add_Code_2" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Event_3_Error_Code" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Event_3_Add_Code_1" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Event_3_Add_Code_2" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="Numatic_Manifold_Outputs" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[BNI IOL-751-V13-K007 Output Map]]>
+</Description>
+<Members>
+<Member Name="ZZZZZZZZZZNumatic_Ma0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="V01_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="V02_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="V03_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="V04_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="V05_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="V06_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="V07_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="V08_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma0" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZNumatic_Ma9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="V09_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma9" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="V10_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma9" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="V11_A" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma9" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="V01_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma9" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="V02_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma9" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="V03_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma9" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="V04_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma9" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="V05_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma9" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZNumatic_Ma18" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="V06_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma18" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="V07_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma18" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="V08_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma18" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="V09_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma18" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="V10_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma18" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="V11_B" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZNumatic_Ma18" BitNumber="5" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="BNI006R_P580_Combo" Class="Standard" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2022-07-13T17:04:36.974Z" CreatedBy="MAGNA\kevin_moore" EditedDate="2022-07-13T18:25:21.772Z" EditedBy="MAGNA\kevin_moore"
+ SoftwareRevision="v33.01">
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="IO_Link_Port_Data" TagType="Base" DataType="IO_Link_Port_Data" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="BNI006R_Mapped_Data" TagType="Base" DataType="Numatic_Manifold" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="Port" TagType="Base" DataType="SINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Port Number]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="SINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Link_Status" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Link Status]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Device_Connected" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Device Connected]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Short_Circuit" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Short Circuit]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="HMI_Ind" TagType="Base" DataType="DINT" Dimensions="3" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false">
+<Description>
+<![CDATA[HMI Indicators]]>
+</Description>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="PortX2" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[Index]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="P580" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="BNI006R" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[Copyright 2013 Balluff, Inc.
+Licensed under the Apache License, Version 2.0 (the "License"); you may
+not use this file except in compliance with the License.  You may obtain
+a copy of the License at:
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied.  See the License for the specific language governing
+permissions and limitations under the License.]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[If Port is active IO-Link mode, verify correct device is connected.]]>
+</Comment>
+<Text>
+<![CDATA[XIC(IO_Link_Port_Data.Inputs[32].0)XIC(IO_Link_Port_Data.Inputs[32].1)XIO(IO_Link_Port_Data.Inputs[33].0)[EQU(IO_Link_Port_Data.Inputs[34],3) EQU(IO_Link_Port_Data.Inputs[35],120) EQU(IO_Link_Port_Data.Inputs[36],5) EQU(IO_Link_Port_Data.Inputs[37],4) EQU(IO_Link_Port_Data.Inputs[38],29) OTE(BNI006R) ,EQU(IO_Link_Port_Data.Inputs[34],2) EQU(IO_Link_Port_Data.Inputs[35],-15) EQU(IO_Link_Port_Data.Inputs[36],0) EQU(IO_Link_Port_Data.Inputs[37],2) EQU(IO_Link_Port_Data.Inputs[38],68) OTE(P580) ]OTE(BNI006R_Mapped_Data.I.Device_OK);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[Error indication if connected device is not correct.]]>
+</Comment>
+<Text>
+<![CDATA[XIC(IO_Link_Port_Data.Inputs[32].0)XIC(IO_Link_Port_Data.Inputs[32].1)XIO(IO_Link_Port_Data.Inputs[33].0)[NEQ(IO_Link_Port_Data.Inputs[34],3) ,NEQ(IO_Link_Port_Data.Inputs[35],120) ,NEQ(IO_Link_Port_Data.Inputs[36],5) ,NEQ(IO_Link_Port_Data.Inputs[37],4) ,NEQ(IO_Link_Port_Data.Inputs[38],29) ][NEQ(IO_Link_Port_Data.Inputs[34],2) ,NEQ(IO_Link_Port_Data.Inputs[35],-15) ,NEQ(IO_Link_Port_Data.Inputs[36],0) ,NEQ(IO_Link_Port_Data.Inputs[37],2) ,NEQ(IO_Link_Port_Data.Inputs[38],68) ]OTE(BNI006R_Mapped_Data.I.Mismatch_Fault);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[Error indication if no device connected.]]>
+</Comment>
+<Text>
+<![CDATA[XIC(IO_Link_Port_Data.Inputs[32].0)XIO(IO_Link_Port_Data.Inputs[32].1)OTE(BNI006R_Mapped_Data.I.Comm_Fault);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[XIC(IO_Link_Port_Data.Inputs[33].0)OTE(BNI006R_Mapped_Data.I.Validation_Failed);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[The next 3 rungs map the 3 most recent Event Codes]]>
+</Comment>
+<Text>
+<![CDATA[MOV(IO_Link_Port_Data.Inputs[39],BNI006R_Mapped_Data.I.Event_1_Error_Code)MOV(IO_Link_Port_Data.Inputs[40],BNI006R_Mapped_Data.I.Event_1_Add_Code_1)MOV(IO_Link_Port_Data.Inputs[41],BNI006R_Mapped_Data.I.Event_1_Add_Code_2);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[MOV(IO_Link_Port_Data.Inputs[42],BNI006R_Mapped_Data.I.Event_2_Error_Code)MOV(IO_Link_Port_Data.Inputs[43],BNI006R_Mapped_Data.I.Event_2_Add_Code_1)MOV(IO_Link_Port_Data.Inputs[44],BNI006R_Mapped_Data.I.Event_2_Add_Code_2);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[MOV(IO_Link_Port_Data.Inputs[45],BNI006R_Mapped_Data.I.Event_3_Error_Code)MOV(IO_Link_Port_Data.Inputs[46],BNI006R_Mapped_Data.I.Event_3_Add_Code_1)MOV(IO_Link_Port_Data.Inputs[47],BNI006R_Mapped_Data.I.Event_3_Add_Code_2);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[XIO(BNI006R)XIO(P580)JMP(End);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[XIC(P580)JMP(P580_Start);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[
+The next 22 rungs write the defined Parameter output arrays to Raw Outputs.
+
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V01_A)OTE(IO_Link_Port_Data.Outputs[1].0);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V02_A)OTE(IO_Link_Port_Data.Outputs[1].1);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V03_A)OTE(IO_Link_Port_Data.Outputs[1].2);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V04_A)OTE(IO_Link_Port_Data.Outputs[1].3);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V05_A)OTE(IO_Link_Port_Data.Outputs[1].4);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V06_A)OTE(IO_Link_Port_Data.Outputs[1].5);]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V07_A)OTE(IO_Link_Port_Data.Outputs[1].6);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V08_A)OTE(IO_Link_Port_Data.Outputs[1].7);]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V09_A)OTE(IO_Link_Port_Data.Outputs[0].0);]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V10_A)OTE(IO_Link_Port_Data.Outputs[0].1);]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V11_A)OTE(IO_Link_Port_Data.Outputs[0].2);]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V01_B)OTE(IO_Link_Port_Data.Outputs[3].0);]]>
+</Text>
+</Rung>
+<Rung Number="22" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V02_B)OTE(IO_Link_Port_Data.Outputs[3].1);]]>
+</Text>
+</Rung>
+<Rung Number="23" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V03_B)OTE(IO_Link_Port_Data.Outputs[3].2);]]>
+</Text>
+</Rung>
+<Rung Number="24" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V04_B)OTE(IO_Link_Port_Data.Outputs[3].3);]]>
+</Text>
+</Rung>
+<Rung Number="25" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V05_B)OTE(IO_Link_Port_Data.Outputs[3].4);]]>
+</Text>
+</Rung>
+<Rung Number="26" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V06_B)OTE(IO_Link_Port_Data.Outputs[3].5);]]>
+</Text>
+</Rung>
+<Rung Number="27" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V07_B)OTE(IO_Link_Port_Data.Outputs[3].6);]]>
+</Text>
+</Rung>
+<Rung Number="28" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V08_B)OTE(IO_Link_Port_Data.Outputs[3].7);]]>
+</Text>
+</Rung>
+<Rung Number="29" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V09_B)OTE(IO_Link_Port_Data.Outputs[2].0);]]>
+</Text>
+</Rung>
+<Rung Number="30" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V10_B)OTE(IO_Link_Port_Data.Outputs[2].1);]]>
+</Text>
+</Rung>
+<Rung Number="31" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V11_B)OTE(IO_Link_Port_Data.Outputs[2].2);]]>
+</Text>
+</Rung>
+<Rung Number="32" Type="N">
+<Text>
+<![CDATA[JMP(End);]]>
+</Text>
+</Rung>
+<Rung Number="33" Type="N">
+<Text>
+<![CDATA[LBL(P580_Start)NOP();]]>
+</Text>
+</Rung>
+<Rung Number="34" Type="N">
+<Comment>
+<![CDATA[
+The next 22 rungs write the defined Parameter output arrays to Raw Outputs.
+
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V01_A)OTE(IO_Link_Port_Data.Outputs[0].0);]]>
+</Text>
+</Rung>
+<Rung Number="35" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V02_A)OTE(IO_Link_Port_Data.Outputs[0].2);]]>
+</Text>
+</Rung>
+<Rung Number="36" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V03_A)OTE(IO_Link_Port_Data.Outputs[0].4);]]>
+</Text>
+</Rung>
+<Rung Number="37" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V04_A)OTE(IO_Link_Port_Data.Outputs[0].6);]]>
+</Text>
+</Rung>
+<Rung Number="38" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V05_A)OTE(IO_Link_Port_Data.Outputs[1].0);]]>
+</Text>
+</Rung>
+<Rung Number="39" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V06_A)OTE(IO_Link_Port_Data.Outputs[1].2);]]>
+</Text>
+</Rung>
+<Rung Number="40" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V07_A)OTE(IO_Link_Port_Data.Outputs[1].4);]]>
+</Text>
+</Rung>
+<Rung Number="41" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V08_A)OTE(IO_Link_Port_Data.Outputs[1].6);]]>
+</Text>
+</Rung>
+<Rung Number="42" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V09_A)OTE(IO_Link_Port_Data.Outputs[2].0);]]>
+</Text>
+</Rung>
+<Rung Number="43" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V10_A)OTE(IO_Link_Port_Data.Outputs[2].2);]]>
+</Text>
+</Rung>
+<Rung Number="44" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V11_A)OTE(IO_Link_Port_Data.Outputs[2].4);]]>
+</Text>
+</Rung>
+<Rung Number="45" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V01_B)OTE(IO_Link_Port_Data.Outputs[0].1);]]>
+</Text>
+</Rung>
+<Rung Number="46" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V02_B)OTE(IO_Link_Port_Data.Outputs[0].3);]]>
+</Text>
+</Rung>
+<Rung Number="47" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V03_B)OTE(IO_Link_Port_Data.Outputs[0].5);]]>
+</Text>
+</Rung>
+<Rung Number="48" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V04_B)OTE(IO_Link_Port_Data.Outputs[0].7);]]>
+</Text>
+</Rung>
+<Rung Number="49" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V05_B)OTE(IO_Link_Port_Data.Outputs[1].1);]]>
+</Text>
+</Rung>
+<Rung Number="50" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V06_B)OTE(IO_Link_Port_Data.Outputs[1].3);]]>
+</Text>
+</Rung>
+<Rung Number="51" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V07_B)OTE(IO_Link_Port_Data.Outputs[1].5);]]>
+</Text>
+</Rung>
+<Rung Number="52" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V08_B)OTE(IO_Link_Port_Data.Outputs[1].7);]]>
+</Text>
+</Rung>
+<Rung Number="53" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V09_B)OTE(IO_Link_Port_Data.Outputs[2].1);]]>
+</Text>
+</Rung>
+<Rung Number="54" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V10_B)OTE(IO_Link_Port_Data.Outputs[2].3);]]>
+</Text>
+</Rung>
+<Rung Number="55" Type="N">
+<Text>
+<![CDATA[XIC(BNI006R_Mapped_Data.O.V11_B)OTE(IO_Link_Port_Data.Outputs[2].5);]]>
+</Text>
+</Rung>
+<Rung Number="56" Type="N">
+<Text>
+<![CDATA[LBL(End)NOP();]]>
+</Text>
+</Rung>
+<Rung Number="57" Type="N">
+<Text>
+<![CDATA[LIM(9,Port,0)TND();]]>
+</Text>
+</Rung>
+<Rung Number="58" Type="N">
+<Text>
+<![CDATA[XIC(Link_Status)XIC(Device_Connected)OTE(HMI_Ind[0].[Port]);]]>
+</Text>
+</Rung>
+<Rung Number="59" Type="N">
+<Text>
+<![CDATA[ADD(Port,Port,PortX2)[XIC(Short_Circuit.[PortX2-2]) ,XIC(Short_Circuit.[PortX2-1]) ]OTE(HMI_Ind[1].[Port]);]]>
+</Text>
+</Rung>
+<Rung Number="60" Type="N">
+<Text>
+<![CDATA[[XIC(HMI_Ind[1].[Port]) ,XIC(BNI006R_Mapped_Data.I.Mismatch_Fault) ]OTE(HMI_Ind[0].[Port+10]);]]>
+</Text>
+</Rung>
+<Rung Number="61" Type="N">
+<Text>
+<![CDATA[[XIC(BNI006R_Mapped_Data.I.Device_OK) ,XIC(HMI_Ind[0].[Port+10]) ]OTE(HMI_Ind[1].[Port+10]);]]>
+</Text>
+</Rung>
+<Rung Number="62" Type="N">
+<Text>
+<![CDATA[[XIO(HMI_Ind[0].[Port+10]) XIO(Device_Connected) ,XIC(HMI_Ind[1].[Port]) ]OTE(HMI_Ind[1].[Port+20]);]]>
+</Text>
+</Rung>
+<Rung Number="63" Type="N">
+<Text>
+<![CDATA[[XIC(HMI_Ind[0].[Port+10]) XIC(HMI_Ind[1].[Port+20]) OTE(HMI_Ind[0].[Port+20]) ,XIC(HMI_Ind[1].[Port]) ]OTE(HMI_Ind[2].[Port+10]);]]>
+</Text>
+</Rung>
+<Rung Number="64" Type="N">
+<Text>
+<![CDATA[XIO(BNI006R_Mapped_Data.I.Device_OK)XIC(HMI_Ind[0].[Port])XIC(HMI_Ind[0].[Port+20])XIC(HMI_Ind[0].[Port+10])OTE(HMI_Ind[2].[Port]);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="Numatic_Manifold"/>
+<Dependency Type="DataType" Name="IO_Link_Port_Data"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

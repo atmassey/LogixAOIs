@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="16.03" TargetType="AddOnInstructionDefinition" ContainsContext="true" Owner="Outotec (Canada) Ltd., Outotec (Canada) Ltd." ExportDate="Fri Mar 06 08:54:44 2009" ExportOptions="References Context">
+<Controller Use="Context" Name="MP1_4333_0">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="Time_Elapsed_FB" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2009-03-04T20:35:39.464Z" CreatedBy="TD\markru" EditedDate="2009-03-06T13:54:32.119Z" EditedBy="TD\markru" SoftwareRevision="v16.03"
+>
+<Description>
+<![CDATA[Measure elapsed time. compares between system time and a time stamp.
+Added benefit is this provides system time if required]]>
+</Description>
+<Parameters>
+<Parameter Name="Year_Stamp" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true">
+<Description>
+<![CDATA[TIME STAMP YEAR]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Month_Stamp" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true">
+<Description>
+<![CDATA[TIME STAMP MONTH]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Day_Stamp" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true">
+<Description>
+<![CDATA[TIME STAMP DAY]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Hour_Stamp" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true">
+<Description>
+<![CDATA[TIME STAMP HOUR]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Minute_Stamp" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true">
+<Description>
+<![CDATA[TIME STAMP MINUTE]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Second_Stamp" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true">
+<Description>
+<![CDATA[TIME STAMP SECOND]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Year_PLC" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[ACTUAL SYSTEM YEAR]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Month_PLC" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[ACTUAL SYSTEM MONTH]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Day_PLC" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[ACTUAL SYSTEM DAY]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Hour_PLC" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[ACTUAL SYSTEM HOUR]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Minute_PLC" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[ACTUAL SYSTEM MINUTE]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Second_PLC" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[ACTUAL SYSTEM SECOND]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Year_Elapsed" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[TOTAL ELAPSED YEARS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Month_Elapsed" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[TOTAL ELAPSED MONTHS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Day_Elapsed" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[TOTAL ELAPSED DAYS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Hour_Elapsed" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[ELASPED HOURS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Minute_Elapsed" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[ELAPSED MINUTES]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Second_Elapsed" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[ELAPSED SECONDS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Day_Total" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[TOTAL DAYS ELAPSED]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Hour_Total" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[TOTAL HOURS ELAPSED]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Minute_Total" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[TOTAL MINUTES ELAPSED FOR TODAY]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Second_Total" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[TOTAL SECONDS ELAPSED THIS DAY]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Fault" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true">
+<Description>
+<![CDATA[INPUT INFORMATION FAULT]]>
+</Description>
+<DefaultData>00</DefaultData>
+</Parameter>
+<Parameter Name="Day_of_Week" DataType="DINT" Usage="Input" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[Day of the WEEK, 0=SUNDAY]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Day_Julian_PLC" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[CURRENT JULIAN DAYS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</Parameter>
+<Parameter Name="Parameter_Fault" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="false">
+<Description>
+<![CDATA[PARAMTER FAULT]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<Comments>
+<Comment Operand=".0">
+<![CDATA[INVALID YEAR]]>
+</Comment>
+<Comment Operand=".1">
+<![CDATA[INVALID MONTH]]>
+</Comment>
+<Comment Operand=".2">
+<![CDATA[INVALID DAY]]>
+</Comment>
+<Comment Operand=".3">
+<![CDATA[INVALID HOUR]]>
+</Comment>
+<Comment Operand=".4">
+<![CDATA[INVALID MINUTES]]>
+</Comment>
+<Comment Operand=".5">
+<![CDATA[INVALID SECONDS]]>
+</Comment>
+<Comment Operand=".6">
+<![CDATA[INVALID YEAR ENTRY]]>
+</Comment>
+</Comments>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Year_Hold" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[DIFFERENCE IN YEARS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Month_Hold" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[DIFFERENCE IN MONTHS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Day_Hold" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[DIFFERENCE IN DAYS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Hour_Hold" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[DIFFERENCE IN HOURS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Minute_Hold" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[DIFFERENCE IN MINUTES]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Second_Hold" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[DIFFERENCE IN SECONDS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="PLC_Date_Time" DataType="DINT" Dimensions="7" Radix="Decimal">
+<DefaultData>00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Second_Previous" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[PERVIOUS TIME]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Calc_Once_Second" DataType="BOOL" Radix="Decimal">
+<Description>
+<![CDATA[PERFORM CALCULATIONS ONCE]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Mod_4_PLC" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[CURRENT YEAR MODULUS OF 4]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Mod_100_PLC" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[CURRENT YEAR MODULUS OF 100]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Mod_400_PLC" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[CURRENT YEAR MODULUS OF 400]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Mod_4_Stamp" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[STAMP YEAR MODUULUS OF 4]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Mod_100_Stamp" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[STAMP YEAR MODULUS OF 100]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Mod_400_Stamp" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[STAMP YEAR MODULUS OF 400]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Leap_Year_PLC" DataType="BOOL" Radix="Decimal">
+<Description>
+<![CDATA[THE CURRENT YEAR IS A LEAP YEAR]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Leap_Year_Stamp" DataType="BOOL" Radix="Decimal">
+<Description>
+<![CDATA[THE STAMP YEAR IS A LEAP YEAR]]>
+</Description>
+<DefaultData>00</DefaultData>
+</LocalTag>
+<LocalTag Name="Day_Julian_Stamp" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[STAMP JULIAN DAYS]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Day_Julian_Hold" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[TEMPORARY DAYS COUNT]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Month_Zeller" DataType="DINT" Radix="Decimal">
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Day_Zeller" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[DAY NUMBER USED FOR ZELLER CALC]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Century_Zeller" DataType="DINT" Radix="Decimal">
+<Description>
+<![CDATA[FIRST 2 NUMBERS FROM THE YEAR]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Century_Hold_Zeller" DataType="DINT" Radix="Decimal">
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Year_Zeller" DataType="DINT" Radix="Decimal">
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+<LocalTag Name="Zeller_Rule" DataType="DINT" Radix="Decimal">
+<DefaultData>00 00 00 00</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[GSV(WallClockTime,,DateTime,PLC_Date_Time[0]);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[MOV(PLC_Date_Time[0],Year_PLC)MOV(PLC_Date_Time[1],Month_PLC)MOV(PLC_Date_Time[2],Day_PLC)MOV(PLC_Date_Time[3],Hour_PLC)MOV(PLC_Date_Time[4],Minute_PLC)MOV(PLC_Date_Time[5],Second_PLC);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[NEQ(Second_PLC,Second_Previous)OTE(Calc_Once_Second)MOV(Second_PLC,Second_Previous);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)MOD(Year_PLC,4,Mod_4_PLC)MOD(Year_PLC,100,Mod_100_PLC)MOD(Year_PLC,400,Mod_400_PLC)MOD(Year_Stamp,4,Mod_4_Stamp)MOD(Year_Stamp,100,Mod_100_Stamp)MOD(Year_Stamp,400,Mod_400_Stamp);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[[EQU(Mod_4_PLC,0) NEQ(Mod_100_PLC,0) ,EQU(Mod_400_PLC,0) ] OTE(Leap_Year_PLC) ,[EQU(Mod_4_Stamp,0) NEQ(Mod_100_Stamp,0) ,EQU(Mod_400_Stamp,0) ] OTE(Leap_Year_Stamp) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[JANUARY HAS 31 DAYS, FEBUARY HAS 28 DAYS OR 29 DAYS, MARCH HAS 31 DAYS, APRIL HAS 30 DAYS, MAY HAS 31 DAYS
+JUNE HAS 30 DAYS, JULY HAS 31 DAYS, AUGUST HAS 31 DAYS, SEPTEMBER HAS 30 DAYS, OCTOBER HAS 31 DAYS, NOVEMBER HAS 30 DAYS, DECEMBER HAS 31 DAYS
+31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[[EQU(Month_PLC,1) MOV(Day_PLC,Day_Julian_PLC) ,EQU(Month_PLC,2) ADD(Day_PLC,31,Day_Julian_PLC) ] ,[EQU(Month_PLC,3) ADD(Day_PLC,59,Day_Julian_PLC) ,EQU(Month_PLC,4) ADD(Day_PLC,90,Day_Julian_PLC) ,EQU(Month_PLC,5) ADD(Day_PLC,120,Day_Julian_PLC) ,EQU(Month_PLC,6) ADD(Day_PLC,151,Day_Julian_PLC) ,EQU(Month_PLC,7) ADD(Day_PLC,181,Day_Julian_PLC) ,EQU(Month_PLC,8) ADD(Day_PLC,212,Day_Julian_PLC) ,EQU(Month_PLC,9) ADD(Day_PLC,243,Day_Julian_PLC) ,EQU(Month_PLC,10) ADD(Day_PLC,273,Day_Julian_PLC) ,EQU(Month_PLC,11) ADD(Day_PLC,304,Day_Julian_PLC) ,EQU(Month_PLC,12) ADD(Day_PLC,334,Day_Julian_PLC) ] EQU(Month_PLC,2) NEQ(Day_PLC,29) XIC(Leap_Year_PLC) ADD(Day_Julian_PLC,1,Day_Julian_PLC) ];]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[JANUARY HAS 31 DAYS, FEBUARY HAS 28 DAYS OR 29 DAYS, MARCH HAS 31 DAYS, APRIL HAS 30 DAYS, MAY HAS 31 DAYS
+JUNE HAS 30 DAYS, JULY HAS 31 DAYS, AUGUST HAS 31 DAYS, SEPTEMBER HAS 30 DAYS, OCTOBER HAS 31 DAYS, NOVEMBER HAS 30 DAYS, DECEMBER HAS 31 DAYS
+31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[[EQU(Month_Stamp,1) MOV(Day_Stamp,Day_Julian_Stamp) ,EQU(Month_Stamp,2) ADD(Day_PLC,31,Day_Julian_Stamp) ] ,[EQU(Month_Stamp,3) ADD(Day_Stamp,59,Day_Julian_Stamp) ,EQU(Month_Stamp,4) ADD(Day_Stamp,90,Day_Julian_Stamp) ,EQU(Month_Stamp,5) ADD(Day_Stamp,120,Day_Julian_Stamp) ,EQU(Month_Stamp,6) ADD(Day_Stamp,151,Day_Julian_Stamp) ,EQU(Month_Stamp,7) ADD(Day_Stamp,181,Day_Julian_Stamp) ,EQU(Month_Stamp,8) ADD(Day_Stamp,212,Day_Julian_Stamp) ,EQU(Month_Stamp,9) ADD(Day_Stamp,243,Day_Julian_Stamp) ,EQU(Month_Stamp,10) ADD(Day_Stamp,273,Day_Julian_Stamp) ,EQU(Month_Stamp,11) ADD(Day_Stamp,304,Day_Julian_Stamp) ,EQU(Month_Stamp,12) ADD(Day_Stamp,334,Day_Julian_Stamp) ] EQU(Month_Stamp,2) NEQ(Day_Stamp,29) XIC(Leap_Year_Stamp) ADD(Day_Julian_Stamp,1,Day_Julian_Stamp) ];]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[GRT(Year_Stamp,0) SUB(Year_PLC,Year_Stamp,Year_Hold) OTU(Parameter_Fault.0) ,LEQ(Year_Stamp,0) MOV(0,Year_Hold) OTL(Parameter_Fault.0) ];]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[GEQ(Month_Stamp,1) LEQ(Month_Stamp,12) SUB(Month_PLC,Month_Stamp,Month_Hold) OTU(Parameter_Fault.1) ,[LEQ(Month_Stamp,0) ,GRT(Month_Stamp,12) ] MOV(0,Month_Hold) OTL(Parameter_Fault.1) ];]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[GEQ(Day_Stamp,1) LEQ(Day_Stamp,31) SUB(Day_PLC,Day_Stamp,Day_Hold) OTU(Parameter_Fault.2) ,[LEQ(Day_Stamp,0) ,GRT(Day_Stamp,31) ] MOV(0,Day_Hold) OTL(Parameter_Fault.2) ];]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[[[GEQ(Hour_Stamp,0) LEQ(Hour_Stamp,60) ,GEQ(Hour_PLC,0) LEQ(Hour_PLC,60) ] SUB(Hour_PLC,Hour_Stamp,Hour_Hold) ,EQU(Hour_Stamp,0) EQU(Hour_PLC,0) MOV(0,Hour_Hold) ] OTU(Parameter_Fault.3) ,[LES(Hour_Stamp,0) ,GRT(Hour_Stamp,24) ] MOV(0,Hour_Hold) OTL(Parameter_Fault.3) ];]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[[[GEQ(Minute_Stamp,0) LEQ(Minute_Stamp,60) ,GEQ(Minute_PLC,0) LEQ(Minute_PLC,60) ] SUB(Minute_PLC,Minute_Stamp,Minute_Hold) ,EQU(Minute_Stamp,0) EQU(Minute_PLC,0) MOV(0,Minute_Hold) ] OTU(Parameter_Fault.4) ,[LES(Minute_Stamp,0) ,GRT(Minute_Stamp,60) ] MOV(0,Minute_Hold) OTL(Parameter_Fault.4) ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[[[GEQ(Second_Stamp,0) LEQ(Second_Stamp,60) ,GEQ(Second_PLC,0) LEQ(Second_PLC,60) ] SUB(Second_PLC,Second_Stamp,Second_Hold) ,EQU(Second_Stamp,0) EQU(Second_PLC,0) MOV(0,Second_Hold) ] OTU(Parameter_Fault.5) ,[LES(Second_Stamp,0) ,GRT(Second_Stamp,60) ] MOV(0,Second_Hold) OTL(Parameter_Fault.5) ];]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[GEQ(Second_Hold,0) ,LES(Second_Hold,0) SUB(Minute_Hold,1,Minute_Hold) ADD(Second_Hold,60,Second_Hold) ]MOV(Second_Hold,Second_Elapsed);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[GEQ(Minute_Hold,0) ,LES(Minute_Hold,0) SUB(Hour_Hold,1,Hour_Hold) ADD(Minute_Hold,60,Minute_Hold) ]MOV(Minute_Hold,Minute_Elapsed);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[GEQ(Hour_Hold,0) ,LES(Hour_Hold,0) SUB(Day_Hold,1,Day_Hold) ADD(Hour_Hold,24,Hour_Hold) ]MOV(Hour_Hold,Hour_Elapsed);]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[GEQ(Day_Hold,0) ,LES(Day_Hold,0) SUB(Month_Hold,1,Month_Hold) [[EQU(Month_Hold,1) ,EQU(Month_Hold,3) ,EQU(Month_Hold,5) ,EQU(Month_Hold,7) ,EQU(Month_Hold,8) ,EQU(Month_Hold,10) ,EQU(Month_Hold,12) ] ADD(Day_Hold,31,Day_Hold) ,[EQU(Month_Hold,4) ,EQU(Month_Hold,6) ,EQU(Month_Hold,9) ,EQU(Month_Hold,11) ] ADD(Day_Hold,30,Day_Hold) ,EQU(Month_Hold,2) [XIO(Leap_Year_Stamp) ADD(Day_Hold,28,Day_Hold) ,XIC(Leap_Year_Stamp) ADD(Day_Hold,29,Day_Hold) ] ] ]MOV(Day_Hold,Day_Elapsed);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[GEQ(Month_Hold,0) ,LES(Month_Hold,0) SUB(Year_Hold,1,Year_Hold) ADD(Month_Hold,12,Month_Hold) ]MOV(Month_Hold,Month_Elapsed);]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[GEQ(Year_Hold,0) MOV(Year_Hold,Year_Elapsed) OTU(Parameter_Fault.6) ,LES(Year_Hold,0) OTL(Parameter_Fault.6) ];]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)MUL(Year_Elapsed,365,Day_Total)SUB(Day_Julian_PLC,Day_Julian_Stamp,Day_Julian_Hold)ADD(Day_Total,Day_Julian_Hold,Day_Total)MUL(Day_Total,24,Hour_Total)ADD(Hour_Total,Hour_Elapsed,Hour_Total)MUL(Hour_Total,60,Minute_Total)ADD(Minute_Total,Minute_Elapsed,Minute_Total)MUL(Minute_Total,60,Second_Total)ADD(Second_Total,Second_Elapsed,Second_Total);]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Comment>
+<![CDATA[Zeller's Rule
+
+The following formula is named Zeller's Rule after a Reverend Zeller. [x] means the greatest integer that is smaller than or equal to x. You can find this number by just dropping everything after the decimal point. For example, [3.79] is 3. Here's the formula:
+
+f = k + [(13*m-1)/5] + D + [D/4] + [C/4] - 2*C.
+
+k is the day of the month. Let's use January 29, 2064 as an example. For this date, k = 29. 
+m is the month number. Months have to be counted specially for Zeller's Rule: March is 1, April is 2, and so on to February, which is 12. (This makes the formula simpler, because on leap years February 29 is counted as the last day of the year.) Because of this rule, January and February are always counted as the 11th and 12th months of the previous year. In our example, m = 11. 
+D is the last two digits of the year. Because of the month numbering, D = 63 in our example, even though we are using a date from 2064. 
+C stands for century: it's the first two digits of the year. In our case, C = 20. 
+Now let's substitute our example numbers into the formula.
+
+f = k + [(13*m-1)/5] + D + [D/4] + [C/4] - 2*C
+= 29 + [(13*11-1)/5] + 63 + [63/4] + [20/4] - 2*20
+= 29 + [28.4] + 63 + [15.75] + [5] - 40
+= 29 + 28 + 63 + 15 + 5 - 40
+= 100. 
+
+Once we have found f, we divide it by 7 and take the remainder (if the remainder is negative, add 7). A remainder of 0 corresponds to Sunday, 1 means Monday, etc. For our example, 100 / 7 = 14, remainder 2, so January 29, 2064 will be a Tuesday.
+
+]]>
+</Comment>
+<Text>
+<![CDATA[AFI()NOP();]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)[MOV(Day_PLC,Day_Zeller) ,ADD(Month_PLC,10,Month_Zeller) GRT(Month_Zeller,12) SUB(Month_Zeller,12,Month_Zeller) ,DIV(Year_PLC,100,Century_Zeller) MUL(Century_Zeller,100,Century_Hold_Zeller) SUB(Year_PLC,Century_Hold_Zeller,Year_Zeller) ];]]>
+</Text>
+</Rung>
+<Rung Number="22" Type="N">
+<Text>
+<![CDATA[XIC(Calc_Once_Second)CPT(Zeller_Rule,(Day_Zeller+((13*Month_Zeller-1)/5)+Year_Zeller+(Year_Zeller/4)+(Century_Zeller/4)-(2*Century_Zeller)))MOD(Zeller_Rule,7,Day_of_Week);]]>
+</Text>
+</Rung>
+<Rung Number="23" Type="N">
+<Text>
+<![CDATA[GRT(Parameter_Fault,0)OTE(Fault);]]>
+</Text>
+</Rung>
+<Rung Number="24" Type="N">
+<Text>
+<![CDATA[XIC(Fault)MOV(0,Year_Elapsed)MOV(0,Month_Elapsed)MOV(0,Day_Elapsed)MOV(0,Hour_Elapsed)MOV(0,Minute_Elapsed)MOV(0,Second_Elapsed)MOV(0,Day_Total)MOV(0,Hour_Total)MOV(0,Minute_Total)MOV(0,Second_Total);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+<WallClockTime Use="Context">
+</WallClockTime>
+</Controller>
+</RSLogix5000Content>

@@ -1,0 +1,1262 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="33.01" TargetName="Keyence_IV3_Mapping" TargetType="AddOnInstructionDefinition" TargetClass="Standard" TargetRevision="1.0 " TargetLastEdited="2022-10-18T14:03:17.085Z" ContainsContext="true" Owner="Information Technology, Bowling Green Metalforming" ExportDate="Sat Nov 05 20:08:39 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans"
+>
+<Controller Use="Context" Name="C1UX_RHRR_170_260">
+<DataTypes Use="Context">
+<DataType Name="Keyence_HMI_PB" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZKeyence_HM0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Manual_Trigger" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_HM0" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Buffer_Clear_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_HM0" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Warning_Clear_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_HM0" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Program_Switching_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_HM0" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Statistics_Reset_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_HM0" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="Master_Image_Registration_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_HM0" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="SD_Card_Stop_Saving_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_HM0" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="Setting_Value_Change_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_HM0" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZKeyence_HM9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Force_Accept" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_HM9" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Force_Reject" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_HM9" BitNumber="1" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="Keyence_IV3_Camera" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZKeyence_IV0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Complete" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Pass" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Fail" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Accepted" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Rejected" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="Auto_Trigger" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="Manual_Trigger" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="Red_Rabbit_Trigger" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="Feature_Count" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZKeyence_IV10" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Connection_Ok" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV10" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Force_Accept" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV10" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Force_Reject" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV10" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Ons" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Pass_Count" DataType="COUNTER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Fail_Count" DataType="COUNTER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Timer" DataType="TIMER" Dimension="5" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Failed_To_Acknowledge" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="I" DataType="Keyence_IV3_Input_Data" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="O" DataType="Keyence_IV3_Output_Data" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="HMI" DataType="Keyence_IV3_HMI_Data" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="Keyence_IV3_Input_Data"/>
+<Dependency Type="DataType" Name="Keyence_IV3_Output_Data"/>
+<Dependency Type="DataType" Name="Keyence_IV3_HMI_Data"/>
+</Dependencies>
+</DataType>
+<DataType Name="Keyence_IV3_HMI_Data" Family="NoFamily" Class="User">
+<Members>
+<Member Name="PB" DataType="Keyence_HMI_PB" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Visibility" DataType="Keyence_IV3_HMI_Visibility" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="IND" DataType="Keyence_IV3_HMI_IND" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="Keyence_HMI_PB"/>
+<Dependency Type="DataType" Name="Keyence_IV3_HMI_Visibility"/>
+<Dependency Type="DataType" Name="Keyence_IV3_HMI_IND"/>
+</Dependencies>
+</DataType>
+<DataType Name="Keyence_IV3_HMI_IND" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZKeyence_IV0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Manual_Trigger" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Buffer_Clear_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Warning_Clear_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Program_Switching_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Statistics_Reset_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="Master_Image_Registration_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="SD_Card_Stop_Saving_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="Setting_Value_Change_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZKeyence_IV9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Triggering" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Connection_OK" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="1" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="Keyence_IV3_HMI_Visibility" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZKeyence_IV0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Manual_Trigger" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Buffer_Clear_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Warning_Clear_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Program_Switching_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Statistics_Reset_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="Master_Image_Registration_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="SD_Card_Stop_Saving_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="Setting_Value_Change_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZKeyence_IV9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Force_Accept" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Force_Reject" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="1" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="Keyence_IV3_Input_Data" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZKeyence_IV0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Trigger_Response" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Trigger response]]>
+</Description>
+</Member>
+<Member Name="Registration_Response" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Master image regestration response]]>
+</Description>
+</Member>
+<Member Name="Program_Switch_Response" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Program switching response]]>
+</Description>
+</Member>
+<Member Name="Warning_Clear_Response" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Warning clear response]]>
+</Description>
+</Member>
+<Member Name="Statistics_Reset_Response" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Statistics reset response]]>
+</Description>
+</Member>
+<Member Name="Buffer_Clear_Response" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Buffer clear response]]>
+</Description>
+</Member>
+<Member Name="SD_Saving_Response" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[SD card saving stop response]]>
+</Description>
+</Member>
+<Member Name="Setting_Value_Change_Response" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Setting value change response]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZKeyence_IV9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Trigger_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Trigger failed]]>
+</Description>
+</Member>
+<Member Name="Image_Regestration_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Master image regestration failed]]>
+</Description>
+</Member>
+<Member Name="Program_Switching_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Program switching failed]]>
+</Description>
+</Member>
+<Member Name="SD_Card_Saving_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[SD card saving stop failed]]>
+</Description>
+</Member>
+<Member Name="Setting_Value_Change_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Setting value change failed]]>
+</Description>
+</Member>
+<Member Name="Result_Available" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Result available]]>
+</Description>
+</Member>
+<Member Name="Result_Update_Complete" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Result update complete]]>
+</Description>
+</Member>
+<Member Name="Busy" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Busy]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZKeyence_IV18" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Imaging" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV18" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Imaging]]>
+</Description>
+</Member>
+<Member Name="Run" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV18" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[RUN]]>
+</Description>
+</Member>
+<Member Name="Ready" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV18" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Ready]]>
+</Description>
+</Member>
+<Member Name="SD_Card_ID_Status" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV18" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[SD card identification status]]>
+</Description>
+</Member>
+<Member Name="Sorting_Mode_Information" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV18" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Sorting mode information]]>
+</Description>
+</Member>
+<Member Name="SD_Card_Full" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV18" BitNumber="5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Insufficient free space on SD card]]>
+</Description>
+</Member>
+<Member Name="Buffer_Overrun_Status" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV18" BitNumber="6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Buffer overrun status]]>
+</Description>
+</Member>
+<Member Name="Warning_Status" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV18" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Warning status]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZKeyence_IV27" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Error_Status" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV27" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Error status]]>
+</Description>
+</Member>
+<Member Name="Overall_Judgment_OK" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV27" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Overall Judgment OK]]>
+</Description>
+</Member>
+<Member Name="Position_Correction" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV27" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Position correction]]>
+</Description>
+</Member>
+<Member Name="Logic_1" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV27" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Logic 1]]>
+</Description>
+</Member>
+<Member Name="Logic_2" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV27" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Logic 2]]>
+</Description>
+</Member>
+<Member Name="Logic_3" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV27" BitNumber="5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Logic 3]]>
+</Description>
+</Member>
+<Member Name="Logic_4" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV27" BitNumber="6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Logic 4]]>
+</Description>
+</Member>
+<Member Name="Overall_Judgment_NG" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV27" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Overall judgment NG]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZKeyence_IV36" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Tool_1" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV36" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 1]]>
+</Description>
+</Member>
+<Member Name="Tool_2" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV36" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 2]]>
+</Description>
+</Member>
+<Member Name="Tool_3" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV36" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 3]]>
+</Description>
+</Member>
+<Member Name="Tool_4" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV36" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 4]]>
+</Description>
+</Member>
+<Member Name="Tool_5" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV36" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 5]]>
+</Description>
+</Member>
+<Member Name="Tool_6" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV36" BitNumber="5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 6]]>
+</Description>
+</Member>
+<Member Name="Tool_7" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV36" BitNumber="6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 7]]>
+</Description>
+</Member>
+<Member Name="Tool_8" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV36" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 8]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZKeyence_IV45" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Tool_9" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV45" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 9]]>
+</Description>
+</Member>
+<Member Name="Tool_10" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV45" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 10]]>
+</Description>
+</Member>
+<Member Name="Tool_11" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV45" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 11]]>
+</Description>
+</Member>
+<Member Name="Tool_12" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV45" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 12]]>
+</Description>
+</Member>
+<Member Name="Tool_13" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV45" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 13]]>
+</Description>
+</Member>
+<Member Name="Tool_14" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV45" BitNumber="5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 14]]>
+</Description>
+</Member>
+<Member Name="Tool_15" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV45" BitNumber="6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 15]]>
+</Description>
+</Member>
+<Member Name="Tool_16" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV45" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 16]]>
+</Description>
+</Member>
+<Member Name="Error_Code" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Error Code]]>
+</Description>
+</Member>
+<Member Name="Warning_Code" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Warning Code]]>
+</Description>
+</Member>
+<Member Name="Remaining_Buffers" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Number of remaining buffers]]>
+</Description>
+</Member>
+<Member Name="Checksum" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Checksum]]>
+</Description>
+</Member>
+<Member Name="Current_Program_Number" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Current program number]]>
+</Description>
+</Member>
+<Member Name="Program_Number_During_Judgement" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Program No. during judgment]]>
+</Description>
+</Member>
+<Member Name="Result_Number" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Result Number]]>
+</Description>
+</Member>
+<Member Name="Processing_Time" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Processing Time]]>
+</Description>
+</Member>
+<Member Name="Processing_Time_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Processing Time Max]]>
+</Description>
+</Member>
+<Member Name="Processing_Time_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Processing time MIN]]>
+</Description>
+</Member>
+<Member Name="Processing_Time_Average" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Processing time AVE]]>
+</Description>
+</Member>
+<Member Name="Number_Of_Triggers" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Number of triggers]]>
+</Description>
+</Member>
+<Member Name="Total_Ok_Count" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[OK count (standard mode) Total sort count (sorting mode)]]>
+</Description>
+</Member>
+<Member Name="Number_Of_NGs" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Number of NGs (standard mode/sorting mode)]]>
+</Description>
+</Member>
+<Member Name="Number_Of_Trigger_Errors" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Number of trigger errors]]>
+</Description>
+</Member>
+<Member Name="Pos_Tool_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Position adjustment tool matching rate]]>
+</Description>
+</Member>
+<Member Name="Pos_Tool_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Position adjustment tool matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Pos_Tool_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Position adjustment tool matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Pos_Tool_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Position adjustment tool threshold]]>
+</Description>
+</Member>
+<Member Name="Tool1_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 1 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool1_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 1 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool1_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 1 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool1_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 1 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool1_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 1 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool1_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 1 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool1_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 1 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool1_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 1 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool1_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 1 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool2_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 2 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool2_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 2 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool2_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 2 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool2_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 2 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool2_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 2 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool2_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 2 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool2_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 2 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool2_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 2 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool2_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 2 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool3_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 3 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool3_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 3 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool3_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 3 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool3_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 3 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool3_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 3 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool3_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 3 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool3_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 3 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool3_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 3 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool3_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 3 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool4_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 4 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool4_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 4 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool4_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 4 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool4_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 4 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool4_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 4 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool4_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 4 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool4_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 4 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool4_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 4 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool4_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 4 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool5_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 5 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool5_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 5 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool5_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 5 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool5_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 5 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool5_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 5 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool5_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 5 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool5_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 5 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool5_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 5 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool5_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 5 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool6_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 6 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool6_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 6 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool6_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 6 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool6_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 6 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool6_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 6 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool6_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 6 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool6_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 6 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool6_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 6 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool6_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 6 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool7_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 7 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool7_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 7 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool7_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 7 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool7_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 7 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool7_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 7 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool7_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 7 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool7_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 7 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool7_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 7 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool7_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 7 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool8_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 8 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool8_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 8 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool8_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 8 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool8_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 8 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool8_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 8 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool8_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 8 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool8_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 8 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool8_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 8 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool8_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 8 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool9_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 9 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool9_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 9 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool9_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 9 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool9_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 9 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool9_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 9 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool9_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 9 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool9_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 9 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool9_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 9 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool9_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 9 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool10_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 10 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool10_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 10 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool10_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 10 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool10_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 10 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool10_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 10 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool10_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 10 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool10_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 10 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool10_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 10 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool10_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 10 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool11_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 11 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool11_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 11 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool11_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 11 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool11_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 11 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool11_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 11 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool11_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 11 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool11_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 11 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool11_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 11 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool11_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 11 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool12_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 12 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool12_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 12 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool12_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 12 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool12_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 12 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool12_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 12 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool12_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 12 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool12_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 12 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool12_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 12 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool12_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 12 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool13_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 13 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool13_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 13 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool13_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 13 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool13_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 13 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool13_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 13 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool13_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 13 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool13_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 13 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool13_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 13 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool13_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 13 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool14_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 14 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool14_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 14 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool14_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 14 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool14_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 14 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool14_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 14 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool14_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 14 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool14_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 14 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool14_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 14 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool14_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 14 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool15_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 15 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool15_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 15 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool15_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 15 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool15_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 15 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool15_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 15 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool15_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 15 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool15_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 15 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool15_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 15 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool15_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 15 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+<Member Name="Tool16_Matching_Rate" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 16 matching rate]]>
+</Description>
+</Member>
+<Member Name="Tool16_Matching_Rate_Max" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 16 matching rate MAX]]>
+</Description>
+</Member>
+<Member Name="Tool16_Matching_Rate_Min" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 16 matching rate MIN]]>
+</Description>
+</Member>
+<Member Name="Tool16_Lower_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 16 lower threshold]]>
+</Description>
+</Member>
+<Member Name="Tool16_Upper_Threshold" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 16 upper threshold]]>
+</Description>
+</Member>
+<Member Name="Tool16_Decimal_Point_Pos" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 16 decimal point position]]>
+</Description>
+</Member>
+<Member Name="Tool16_Pitch_Max_Hue" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 16 pitch present value MAX, color average H (hue)]]>
+</Description>
+</Member>
+<Member Name="Tool16_Pitch_Min_Sat" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 16 pitch present value MIN, color average S (saturation)]]>
+</Description>
+</Member>
+<Member Name="Tool16_Pitch_Brightness" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tool 16 number of pitches, color average V (brightness), brightness average]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+<DataType Name="Keyence_IV3_Output_Data" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZKeyence_IV0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Trigger" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Trigger request]]>
+</Description>
+</Member>
+<Member Name="Master_Image_Registration_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Master image registration request]]>
+</Description>
+</Member>
+<Member Name="Program_Switching_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Program switching request]]>
+</Description>
+</Member>
+<Member Name="Warning_Clear_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Warning clear request]]>
+</Description>
+</Member>
+<Member Name="Statistics_Reset_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Statistics reset request]]>
+</Description>
+</Member>
+<Member Name="Buffer_Clear_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Buffer clear request]]>
+</Description>
+</Member>
+<Member Name="SD_Card_Stop_Saving_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[SD card saving stop request]]>
+</Description>
+</Member>
+<Member Name="Setting_Value_Change_Request" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV0" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Setting value change request]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZKeyence_IV9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Result_Acq_Complete_Notification" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZKeyence_IV9" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Result acquisition complete notification]]>
+</Description>
+</Member>
+<Member Name="Program_Number" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Program Number]]>
+</Description>
+</Member>
+<Member Name="SettingData1" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Upper/lower limit setting No./Master text setting No./FTP/Sdsaved setting No.]]>
+</Description>
+</Member>
+<Member Name="SettingData2" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Upper/lower limit/Master Text/FTP/SD saving settings]]>
+</Description>
+</Member>
+<Member Name="SettingData3" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Upper/lower limit/Master Text/FTP/SD saving settings]]>
+</Description>
+</Member>
+<Member Name="SettingData4" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Upper/lower limit/Master Text/FTP/SD saving settings]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<EncodedData EncodedType="AddOnInstructionDefinition" Name="Keyence_IV3_Mapping" Class="Standard" Revision="1.0" EditedDate="2022-10-18T14:03:17.085Z" SoftwareRevision="v33.01" EncryptionConfig="9">
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="IV3_InputData" TagType="Base" DataType="INT" Dimensions="196" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="IV3_OutputData" TagType="Base" DataType="INT" Dimensions="6" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="IV3_Mapped" TagType="Base" DataType="Keyence_IV3_Camera" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+</Parameters>
+<Dependencies>
+<Dependency Type="DataType" Name="Keyence_IV3_Camera"/>
+</Dependencies>
+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</EncodedData>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

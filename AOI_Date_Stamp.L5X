@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="20.05" TargetName="AOI_Date_Stamp" TargetType="AddOnInstructionDefinition" TargetClass="Standard" TargetRevision="1.0 " TargetLastEdited="2017-06-07T19:51:23.096Z" ContainsContext="true" Owner="Information Technology, Bowling Green Metalforming" ExportDate="Sat Oct 29 19:59:39 2022" ExportOptions="References DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans"
+>
+<Controller Use="Context" Name="C1_E2_Rears_MCP6A">
+<DataTypes Use="Context">
+<DataType Name="String_08_Characters" Family="StringFamily" Class="User">
+<Description>
+<![CDATA[8 Character
+String]]>
+</Description>
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="8" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="String_Date_Stamp" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="40" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="String_02_Characters" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="2" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="String_04_Characters" Family="StringFamily" Class="User">
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="4" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="String_05_Characters" Family="StringFamily" Class="User">
+<Description>
+<![CDATA[5 Character
+String]]>
+</Description>
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="5" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="String_03_Characters" Family="StringFamily" Class="User">
+<Description>
+<![CDATA[3 Character
+String]]>
+</Description>
+<Members>
+<Member Name="LEN" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DATA" DataType="SINT" Dimension="3" Radix="ASCII" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_Date_Stamp" Class="Standard" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2017-06-06T17:19:03.995Z" CreatedBy="MAGNA\mvanvelzer" EditedDate="2017-06-07T19:51:23.096Z" EditedBy="MAGNA\mvanvelzer"
+ SoftwareRevision="v28.02">
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Input_Year" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Input_Month" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Input_Day_of_Month" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Input_Day_of_Week" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Input_Hours" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Input_Minutes" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Input_Seconds" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Input_Shift_1" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Input_Shift_2" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Input_Shift_3" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData>00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Date_Stamp" TagType="Base" DataType="String_Date_Stamp" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+</Parameters>
+<LocalTags>
+<LocalTag Name="String_Month_12" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"December"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 44 45 43 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-DEC-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_11" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"November"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 4E 4F 56 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-NOV-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_10" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"October"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 4F 43 54 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-OCT-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_09" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"September"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 53 45 50 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-SEP-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_08" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"August"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 41 55 47 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-AUG-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_07" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"July"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 4A 55 4C 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-JUL-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_06" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"June"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 4A 55 4E 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-JUN-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_05" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"May"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 4D 41 59 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-MAY-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_04" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"April"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 41 50 52 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-APR-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_03" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"March"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 4D 41 52 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-MAR-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_02" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"February"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 46 45 42 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-FEB-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Month_01" DataType="String_05_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"January"]]>
+</Description>
+<DefaultData>05 00 00 00 2D 4A 41 4E 2D 00 00 00</DefaultData>
+<DefaultData Format="String" Length="5">
+<![CDATA['-JAN-']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Day_7" DataType="String_03_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"Sunday"]]>
+</Description>
+<DefaultData>03 00 00 00 53 55 4E 00</DefaultData>
+<DefaultData Format="String" Length="3">
+<![CDATA['SUN']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Day_6" DataType="String_03_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"Saturday"]]>
+</Description>
+<DefaultData>03 00 00 00 53 41 54 00</DefaultData>
+<DefaultData Format="String" Length="3">
+<![CDATA['SAT']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Day_5" DataType="String_03_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"Friday"]]>
+</Description>
+<DefaultData>03 00 00 00 46 52 49 00</DefaultData>
+<DefaultData Format="String" Length="3">
+<![CDATA['FRI']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Day_4" DataType="String_03_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"Thursday"]]>
+</Description>
+<DefaultData>03 00 00 00 54 48 55 00</DefaultData>
+<DefaultData Format="String" Length="3">
+<![CDATA['THU']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Day_3" DataType="String_03_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"Wednesday"]]>
+</Description>
+<DefaultData>03 00 00 00 57 45 44 00</DefaultData>
+<DefaultData Format="String" Length="3">
+<![CDATA['WED']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Day_2" DataType="String_03_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"Tuesday"]]>
+</Description>
+<DefaultData>03 00 00 00 54 55 45 00</DefaultData>
+<DefaultData Format="String" Length="3">
+<![CDATA['TUE']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Day_1" DataType="String_03_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"Monday"]]>
+</Description>
+<DefaultData>03 00 00 00 4D 4F 4E 00</DefaultData>
+<DefaultData Format="String" Length="3">
+<![CDATA['MON']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ASCII_Character_Space" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[ASCII Code
+"Space"]]>
+</Description>
+<DefaultData>20 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="32"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ASCII_Character_Colon" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[ASCII Code
+"Colon"]]>
+</Description>
+<DefaultData>3A 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="58"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ASCII_Character_Minus" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[ASCII Code
+"Minus"]]>
+</Description>
+<DefaultData>2D 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="45"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Shift_3" DataType="String_08_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"Shift #3"]]>
+</Description>
+<DefaultData>08 00 00 00 53 68 69 66 74 20 23 33</DefaultData>
+<DefaultData Format="String" Length="8">
+<![CDATA['Shift #3']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Shift_2" DataType="String_08_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"Shift #2"]]>
+</Description>
+<DefaultData>08 00 00 00 53 68 69 66 74 20 23 32</DefaultData>
+<DefaultData Format="String" Length="8">
+<![CDATA['Shift #2']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="String_Shift_1" DataType="String_08_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[String
+"Shift #1"]]>
+</Description>
+<DefaultData>08 00 00 00 53 68 69 66 74 20 23 31</DefaultData>
+<DefaultData Format="String" Length="8">
+<![CDATA['Shift #1']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Conversion_String_Seconds" DataType="String_02_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[Converted
+to
+ASCII String
+-
+Seconds]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="String" Length="0">
+<![CDATA['']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Conversion_String_Minutes" DataType="String_02_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[Converted
+to
+ASCII String
+-
+Minutes]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="String" Length="0">
+<![CDATA['']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Conversion_String_Hour" DataType="String_02_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[Converted
+to
+ASCII String
+-
+Hours]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="String" Length="0">
+<![CDATA['']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Conversion_String_Year" DataType="String_04_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[Converted
+to
+ASCII String
+-
+Year]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="String" Length="0">
+<![CDATA['']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Conversion_String_Day_of_Month" DataType="String_02_Characters" ExternalAccess="None">
+<Description>
+<![CDATA[Converted
+to
+ASCII String
+-
+Day of the Month]]>
+</Description>
+<DefaultData>00 00 00 00 00 00 00 00</DefaultData>
+<DefaultData Format="String" Length="0">
+<![CDATA['']]>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ASCII_Character_Zero" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<Description>
+<![CDATA[ASCII Code
+"Zero"]]>
+</Description>
+<DefaultData>00 00 00 00</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+DATE STAMP
+(ASCII String)
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>
+Constants
+<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>]]>
+</Comment>
+<Text>
+<![CDATA[MOV(32,ASCII_Character_Space)MOV(48,ASCII_Character_Zero)MOV(45,ASCII_Character_Minus)MOV(58,ASCII_Character_Colon);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[[MOV(77,String_Day_1.DATA[0]) MOV(79,String_Day_1.DATA[1]) MOV(78,String_Day_1.DATA[2]) ,MOV(84,String_Day_2.DATA[0]) MOV(85,String_Day_2.DATA[1]) MOV(69,String_Day_2.DATA[2]) ,MOV(87,String_Day_3.DATA[0]) MOV(69,String_Day_3.DATA[1]) MOV(68,String_Day_3.DATA[2]) ,MOV(84,String_Day_4.DATA[0]) MOV(72,String_Day_4.DATA[1]) MOV(85,String_Day_4.DATA[2]) ,MOV(70,String_Day_5.DATA[0]) MOV(82,String_Day_5.DATA[1]) MOV(73,String_Day_5.DATA[2]) ,MOV(83,String_Day_6.DATA[0]) MOV(65,String_Day_6.DATA[1]) MOV(84,String_Day_6.DATA[2]) ,MOV(83,String_Day_7.DATA[0]) MOV(85,String_Day_7.DATA[1]) MOV(78,String_Day_7.DATA[2]) ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[[MOV(45,String_Month_01.DATA[0]) MOV(74,String_Month_01.DATA[1]) MOV(65,String_Month_01.DATA[2]) MOV(78,String_Month_01.DATA[3]) MOV(45,String_Month_01.DATA[4]) ,MOV(45,String_Month_02.DATA[0]) MOV(70,String_Month_02.DATA[1]) MOV(69,String_Month_02.DATA[2]) MOV(66,String_Month_02.DATA[3]) MOV(45,String_Month_02.DATA[4]) ,MOV(45,String_Month_03.DATA[0]) MOV(77,String_Month_03.DATA[1]) MOV(65,String_Month_03.DATA[2]) MOV(82,String_Month_03.DATA[3]) MOV(45,String_Month_03.DATA[4]) ,MOV(45,String_Month_04.DATA[0]) MOV(65,String_Month_04.DATA[1]) MOV(80,String_Month_04.DATA[2]) MOV(82,String_Month_04.DATA[3]) MOV(45,String_Month_04.DATA[4]) ,MOV(45,String_Month_05.DATA[0]) MOV(77,String_Month_05.DATA[1]) MOV(65,String_Month_05.DATA[2]) MOV(89,String_Month_05.DATA[3]) MOV(45,String_Month_05.DATA[4]) ,MOV(45,String_Month_06.DATA[0]) MOV(74,String_Month_06.DATA[1]) MOV(85,String_Month_06.DATA[2]) MOV(78,String_Month_06.DATA[3]) MOV(45,String_Month_06.DATA[4]) ,MOV(45,String_Month_07.DATA[0]) MOV(74,String_Month_07.DATA[1]) MOV(85,String_Month_07.DATA[2]) MOV(76,String_Month_07.DATA[3]) MOV(45,String_Month_07.DATA[4]) ,MOV(45,String_Month_08.DATA[0]) MOV(65,String_Month_08.DATA[1]) MOV(85,String_Month_08.DATA[2]) MOV(71,String_Month_08.DATA[3]) MOV(45,String_Month_08.DATA[4]) ,MOV(45,String_Month_09.DATA[0]) MOV(83,String_Month_09.DATA[1]) MOV(69,String_Month_09.DATA[2]) MOV(80,String_Month_09.DATA[3]) MOV(45,String_Month_09.DATA[4]) ,MOV(45,String_Month_10.DATA[0]) MOV(79,String_Month_10.DATA[1]) MOV(67,String_Month_10.DATA[2]) MOV(84,String_Month_10.DATA[3]) MOV(45,String_Month_10.DATA[4]) ,MOV(45,String_Month_11.DATA[0]) MOV(78,String_Month_11.DATA[1]) MOV(79,String_Month_11.DATA[2]) MOV(86,String_Month_11.DATA[3]) MOV(45,String_Month_11.DATA[4]) ,MOV(45,String_Month_12.DATA[0]) MOV(68,String_Month_12.DATA[1]) MOV(69,String_Month_12.DATA[2]) MOV(67,String_Month_12.DATA[3]) MOV(45,String_Month_12.DATA[4]) ];]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[[MOV(83,String_Shift_1.DATA[0]) MOV(104,String_Shift_1.DATA[1]) MOV(105,String_Shift_1.DATA[2]) MOV(102,String_Shift_1.DATA[3]) ,MOV(116,String_Shift_1.DATA[4]) MOV(32,String_Shift_1.DATA[5]) MOV(35,String_Shift_1.DATA[6]) MOV(49,String_Shift_1.DATA[7]) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[[MOV(83,String_Shift_2.DATA[0]) MOV(104,String_Shift_2.DATA[1]) MOV(105,String_Shift_2.DATA[2]) MOV(102,String_Shift_2.DATA[3]) ,MOV(116,String_Shift_2.DATA[4]) MOV(32,String_Shift_2.DATA[5]) MOV(35,String_Shift_2.DATA[6]) MOV(50,String_Shift_2.DATA[7]) ];]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[[MOV(83,String_Shift_3.DATA[0]) MOV(104,String_Shift_3.DATA[1]) MOV(105,String_Shift_3.DATA[2]) MOV(102,String_Shift_3.DATA[3]) ,MOV(116,String_Shift_3.DATA[4]) MOV(32,String_Shift_3.DATA[5]) MOV(35,String_Shift_3.DATA[6]) MOV(51,String_Shift_3.DATA[7]) ];]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
+<![CDATA[<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>
+Conversion
+<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>]]>
+</Comment>
+<Text>
+<![CDATA[DTOS(Input_Day_of_Month,Conversion_String_Day_of_Month)DTOS(Input_Year,Conversion_String_Year);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[DTOS(Input_Hours,Conversion_String_Hour)DTOS(Input_Minutes,Conversion_String_Minutes)DTOS(Input_Seconds,Conversion_String_Seconds);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>
+Logic
+<<<<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>]]>
+</Comment>
+<Text>
+<![CDATA[MOV(40,Date_Stamp.LEN)FLL(ASCII_Character_Space,Date_Stamp.DATA[0],40);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Text>
+<![CDATA[[EQU(Input_Day_of_Week,1) COP(String_Day_1.DATA[0],Date_Stamp.DATA[0],3) ,EQU(Input_Day_of_Week,2) COP(String_Day_2.DATA[0],Date_Stamp.DATA[0],3) ,EQU(Input_Day_of_Week,3) COP(String_Day_3.DATA[0],Date_Stamp.DATA[0],3) ,EQU(Input_Day_of_Week,4) COP(String_Day_4.DATA[0],Date_Stamp.DATA[0],3) ,EQU(Input_Day_of_Week,5) COP(String_Day_5.DATA[0],Date_Stamp.DATA[0],3) ,EQU(Input_Day_of_Week,6) COP(String_Day_6.DATA[0],Date_Stamp.DATA[0],3) ,EQU(Input_Day_of_Week,7) COP(String_Day_7.DATA[0],Date_Stamp.DATA[0],3) ];]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[[LES(Input_Day_of_Month,10) MOV(ASCII_Character_Space,Date_Stamp.DATA[5]) COP(Conversion_String_Day_of_Month.DATA[0],Date_Stamp.DATA[6],1) ,GEQ(Input_Day_of_Month,10) COP(Conversion_String_Day_of_Month.DATA[0],Date_Stamp.DATA[5],2) ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Text>
+<![CDATA[[EQU(Input_Month,1) COP(String_Month_01.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,2) COP(String_Month_02.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,3) COP(String_Month_03.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,4) COP(String_Month_04.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,5) COP(String_Month_05.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,6) COP(String_Month_06.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,7) COP(String_Month_07.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,8) COP(String_Month_08.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,9) COP(String_Month_09.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,10) COP(String_Month_10.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,11) COP(String_Month_11.DATA[0],Date_Stamp.DATA[7],5) ,EQU(Input_Month,12) COP(String_Month_12.DATA[0],Date_Stamp.DATA[7],5) ];]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Text>
+<![CDATA[COP(Conversion_String_Year.DATA[0],Date_Stamp.DATA[12],4);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[[LES(Input_Hours,10) MOV(ASCII_Character_Space,Date_Stamp.DATA[18]) COP(Conversion_String_Hour.DATA[0],Date_Stamp.DATA[19],1) ,GEQ(Input_Hours,10) COP(Conversion_String_Hour.DATA[0],Date_Stamp.DATA[18],2) ];]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[MOV(ASCII_Character_Colon,Date_Stamp.DATA[20]);]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Text>
+<![CDATA[[LES(Input_Minutes,10) MOV(ASCII_Character_Zero,Date_Stamp.DATA[21]) COP(Conversion_String_Minutes.DATA[0],Date_Stamp.DATA[22],1) ,GEQ(Input_Minutes,10) COP(Conversion_String_Minutes.DATA[0],Date_Stamp.DATA[21],2) ];]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Text>
+<![CDATA[MOV(ASCII_Character_Colon,Date_Stamp.DATA[23]);]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Text>
+<![CDATA[[LES(Input_Seconds,10) MOV(ASCII_Character_Zero,Date_Stamp.DATA[24]) COP(Conversion_String_Seconds.DATA[0],Date_Stamp.DATA[25],1) ,GEQ(Input_Seconds,10) COP(Conversion_String_Seconds.DATA[0],Date_Stamp.DATA[24],2) ];]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Text>
+<![CDATA[[XIC(Input_Shift_1) COP(String_Shift_1.DATA[0],Date_Stamp.DATA[28],8) ,XIC(Input_Shift_2) COP(String_Shift_2.DATA[0],Date_Stamp.DATA[28],8) ,XIC(Input_Shift_3) COP(String_Shift_3.DATA[0],Date_Stamp.DATA[28],8) ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="String_02_Characters"/>
+<Dependency Type="DataType" Name="String_04_Characters"/>
+<Dependency Type="DataType" Name="String_Date_Stamp"/>
+<Dependency Type="DataType" Name="String_03_Characters"/>
+<Dependency Type="DataType" Name="String_05_Characters"/>
+<Dependency Type="DataType" Name="String_08_Characters"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

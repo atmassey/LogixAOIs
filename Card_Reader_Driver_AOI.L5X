@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="33.01" TargetName="Card_Reader_Driver" TargetType="AddOnInstructionDefinition" TargetClass="Standard" TargetRevision="1.0 " TargetLastEdited="2023-01-31T13:38:01.495Z" ContainsContext="true" Owner="Information Technology, Bowling Green Metalforming" ExportDate="Tue Jan 31 07:39:27 2023" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans"
+>
+<Controller Use="Context" Name="Lab0">
+<DataTypes Use="Context">
+<DataType Name="Card_Reader" Family="NoFamily" Class="User">
+<Members>
+<Member Name="Operator_Logged_In_Timer" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Pulse_Timer" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Pulse_Timer1" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="MiscTimer" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Trigger_Delay" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="MiscCounter" DataType="COUNTER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="One_Shot" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="MiscDint" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="CardNum" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZCard_Reade9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_1_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade9" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_1_Passed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade9" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_2_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade9" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_2_Passed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade9" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_3_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade9" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_3_Passed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade9" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_4_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade9" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_4_Passed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade9" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZCard_Reade18" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_5_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade18" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_5_Passed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade18" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_6_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade18" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_6_Passed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade18" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_99_Failed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade18" BitNumber="4" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_99_Passed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade18" BitNumber="5" ExternalAccess="Read/Write"/>
+<Member Name="Operator_Logout" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade18" BitNumber="6" ExternalAccess="Read/Write"/>
+<Member Name="Operator_Logout_Latch" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade18" BitNumber="7" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZCard_Reade27" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Login_Verification_Required" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade27" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="Operator_Login" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade27" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="Trigger" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade27" BitNumber="2" ExternalAccess="Read/Write"/>
+<Member Name="New_Operator_Login" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZCard_Reade27" BitNumber="3" ExternalAccess="Read/Write"/>
+<Member Name="Null" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Final" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Last_Scan" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Incr" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Process" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Cardreader" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Login_Name_Display" DataType="STRING" Dimension="5" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_1_Control" DataType="CONTROL" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_2_Control" DataType="CONTROL" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_3_Control" DataType="CONTROL" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_4_Control" DataType="CONTROL" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_5_Control" DataType="CONTROL" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_6_Control" DataType="CONTROL" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Level_Access_99_Control" DataType="CONTROL" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="Card_Reader_Driver" Class="Standard" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2023-01-31T13:16:27.824Z" CreatedBy="MAGNA\Austin.Massey" EditedDate="2023-01-31T13:38:01.495Z" EditedBy="MAGNA\Austin.Massey"
+ SoftwareRevision="v33.01">
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="CR_DRIVER" TagType="Base" DataType="Card_Reader" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="DriverAccessPermissive" TagType="Base" DataType="DINT" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="DriverLoginComplete" TagType="Base" DataType="BOOL" Usage="InOut" Radix="Decimal" Required="true" Visible="true" Constant="false"/>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Always_Off" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[XIC(S:FS)RES(CR_DRIVER.Pulse_Timer)RES(CR_DRIVER.Pulse_Timer1);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[XIC(Always_Off)[XIC(CR_DRIVER.Pulse_Timer.TT) ,XIC(CR_DRIVER.Pulse_Timer1.DN) ,XIO(CR_DRIVER.Pulse_Timer1.TT) XIO(CR_DRIVER.Pulse_Timer1.TT) ]MOV(1000,CR_DRIVER.Pulse_Timer.PRE)TON(CR_DRIVER.Pulse_Timer,?,?)OTE(CR_DRIVER.Trigger);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[[XIC(CR_DRIVER.Pulse_Timer1.TT) ,XIC(CR_DRIVER.Pulse_Timer.DN) ]MOV(1000,CR_DRIVER.Pulse_Timer1.PRE)TON(CR_DRIVER.Pulse_Timer1,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[COP(CR_DRIVER.Last_Scan,CR_DRIVER.Incr,1);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[[XIC(CR_DRIVER.Operator_Logged_In_Timer.DN) ,XIC(CR_DRIVER.Operator_Logout_Latch) ,XIC(CR_DRIVER.One_Shot.0) ]MOV(0,DriverAccessPermissive)COP(CR_DRIVER.Null,CR_DRIVER.Login_Name_Display[2],1)COP(CR_DRIVER.Null,CR_DRIVER.Login_Name_Display[0],1)OTU(CR_DRIVER.Operator_Logout_Latch)OTU(DriverLoginComplete)OTU(CR_DRIVER.Operator_Logout);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="Card_Reader"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>
